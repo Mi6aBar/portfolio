@@ -7,14 +7,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            
+
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            
+
             const rotateX = ((y - centerY) / centerY) * -5; // Max rotation deg
             const rotateY = ((x - centerX) / centerX) * 5;
 
             card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+
+            // Spotlight effect
+            card.style.setProperty('--x', `${x}px`);
+            card.style.setProperty('--y', `${y}px`);
         });
 
         card.addEventListener('mouseleave', () => {
