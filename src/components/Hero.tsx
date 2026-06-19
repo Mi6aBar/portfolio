@@ -23,7 +23,7 @@ export function Hero() {
       </div>
 
       <div className="relative flex flex-col md:flex-row md:min-h-[400px]">
-        <div className="relative h-48 sm:h-56 md:absolute md:inset-y-0 md:left-0 md:h-auto md:w-[46%] lg:w-[38%] md:max-w-[560px] shrink-0 overflow-hidden">
+        <div className="hero-photo-shell relative h-48 sm:h-56 md:absolute md:inset-y-0 md:left-0 md:h-auto md:w-[46%] lg:w-[38%] md:max-w-[560px] shrink-0 overflow-hidden">
           <picture>
             <source srcSet="./avatar.webp" type="image/webp" />
             <img
@@ -32,6 +32,10 @@ export function Hero() {
               className="h-full w-full object-cover object-[center_18%] md:object-left hero-photo-fade"
             />
           </picture>
+          <div
+            className="hero-photo-bottom-fade pointer-events-none absolute inset-x-0 bottom-0 hidden md:block"
+            aria-hidden="true"
+          />
         </div>
 
         <motion.div
@@ -104,7 +108,7 @@ export function Hero() {
       </div>
 
       <div
-        className="hero-bottom-feather pointer-events-none absolute inset-x-0 bottom-0 h-16 sm:h-24 md:h-36 z-[1]"
+        className="hero-bottom-feather pointer-events-none absolute inset-x-0 bottom-0 h-20 sm:h-28 md:h-44 lg:h-52 z-[2]"
         aria-hidden="true"
       />
     </section>
