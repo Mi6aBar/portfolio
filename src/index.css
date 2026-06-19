@@ -50,12 +50,29 @@ body {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     box-shadow: none;
-    border-color: rgb(255 255 255 / 0.06);
+    border: none;
   }
 
   .glass-card-hover:hover,
   .glass-card-active {
-    border-color: rgb(255 255 255 / 0.08);
+    background: #0f0f0f;
+  }
+
+  .music-track-card {
+    background: #0f0f0f;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .music-player-embed {
+    background: #0f0f0f;
+    line-height: 0;
+  }
+
+  .music-player-embed iframe {
+    display: block;
+    margin-bottom: -2px;
   }
 }
 
@@ -359,6 +376,16 @@ body {
 .app-expanded-panel {
   scroll-margin-top: 1.5rem;
   scroll-margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.music-player-embed {
+  background: #0f0f0f;
+  line-height: 0;
+}
+
+.music-player-embed iframe {
+  display: block;
 }
 
 .glass-card {
