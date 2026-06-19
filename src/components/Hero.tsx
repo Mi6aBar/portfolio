@@ -17,19 +17,19 @@ export function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section id="hero" className="relative z-0 overflow-visible bg-[#0F0F0F] md:min-h-[460px]">
+    <section id="hero" className="relative z-0 overflow-visible bg-[#0F0F0F]">
       <div className="absolute top-4 right-4 sm:top-5 sm:right-6 z-20 hidden md:block">
         <LanguageToggle />
       </div>
 
-      <div className="relative flex flex-col md:flex-row md:min-h-[460px]">
-        <div className="hero-photo-shell relative h-48 sm:h-56 md:absolute md:inset-y-0 md:left-0 md:h-full md:w-[46%] lg:w-[38%] md:max-w-[560px] shrink-0 overflow-hidden">
+      <div className="relative flex flex-col md:flex-row md:min-h-[440px]">
+        <div className="hero-photo-shell relative h-48 sm:h-56 md:absolute md:top-0 md:left-0 md:-bottom-36 md:w-[46%] lg:w-[38%] md:max-w-[560px] shrink-0 overflow-hidden">
           <picture>
             <source srcSet="./avatar.webp" type="image/webp" />
             <img
               src="./avatar.jpg"
               alt="mishabar"
-              className="h-full w-full object-cover object-[center_18%] md:object-left hero-photo-fade"
+              className="h-full w-full object-cover object-[center_18%] md:object-[left_22%] hero-photo-fade"
             />
           </picture>
           <div
@@ -42,7 +42,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative z-10 w-full md:ml-[38%] lg:ml-[36%] flex flex-1 flex-col justify-center px-4 sm:px-6 md:pr-12 md:pl-6 py-6 sm:py-8 md:py-12 pb-12 sm:pb-14 md:pb-24 text-left"
+          className="relative z-10 w-full md:ml-[38%] lg:ml-[36%] flex flex-1 flex-col justify-center px-4 sm:px-6 md:pr-12 md:pl-6 py-6 sm:py-8 md:py-10 pb-12 sm:pb-14 md:pb-14 text-left"
         >
           <h1 className="hero-nickname text-[1.65rem] leading-none sm:text-4xl md:text-5xl font-sans tracking-[0.16em] sm:tracking-[0.28em] md:tracking-[0.35em] lowercase not-italic mb-2 max-w-full">
             {"mishabar".split("").map((letter, index, letters) => {
@@ -108,7 +108,7 @@ export function Hero() {
       </div>
 
       <div
-        className="hero-bottom-feather pointer-events-none absolute inset-x-0 bottom-0 h-20 sm:h-28 md:h-48 lg:h-56 z-[3]"
+        className="hero-bottom-feather pointer-events-none absolute inset-x-0 bottom-0 h-20 sm:h-28 md:h-52 lg:h-60 z-[5]"
         aria-hidden="true"
       />
     </section>

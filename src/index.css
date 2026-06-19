@@ -83,8 +83,20 @@ body {
 
 @media (min-width: 768px) {
   .hero-photo-fade {
-    -webkit-mask-image: linear-gradient(to right, #000 54%, transparent 100%);
-    mask-image: linear-gradient(to right, #000 54%, transparent 100%);
+    -webkit-mask-image: linear-gradient(
+      to right,
+      #000 0%,
+      #000 46%,
+      rgb(0 0 0 / 0.65) 68%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      #000 0%,
+      #000 46%,
+      rgb(0 0 0 / 0.65) 68%,
+      transparent 100%
+    );
   }
 
   .hero-photo-shell {
@@ -93,15 +105,20 @@ body {
 
   .hero-photo-bottom-fade {
     z-index: 2;
-    height: 13rem;
+    height: 58%;
+    min-height: 16rem;
     background: linear-gradient(
       to bottom,
       rgb(15 15 15 / 0) 0%,
-      rgb(15 15 15 / 0.18) 28%,
-      rgb(15 15 15 / 0.55) 58%,
-      rgb(15 15 15 / 0.88) 82%,
+      rgb(15 15 15 / 0.22) 32%,
+      rgb(15 15 15 / 0.62) 62%,
+      rgb(15 15 15 / 0.9) 82%,
       rgb(15 15 15 / 1) 100%
     );
+  }
+
+  #hero {
+    padding-bottom: 2rem;
   }
 }
 
@@ -124,14 +141,16 @@ body {
     background: linear-gradient(
       to bottom,
       rgb(15 15 15 / 0) 0%,
-      rgb(15 15 15 / 0.15) 24%,
-      rgb(15 15 15 / 0.5) 52%,
-      rgb(15 15 15 / 0.82) 74%,
-      rgb(15 15 15 / 0.96) 88%,
+      rgb(15 15 15 / 0.12) 18%,
+      rgb(15 15 15 / 0.42) 48%,
+      rgb(15 15 15 / 0.78) 72%,
+      rgb(15 15 15 / 0.95) 88%,
       rgb(15 15 15 / 1) 100%
     );
-    backdrop-filter: blur(24px) saturate(150%);
-    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    backdrop-filter: blur(28px) saturate(160%);
+    -webkit-backdrop-filter: blur(28px) saturate(160%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / 0.35) 28%, #000 72%);
+    mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / 0.35) 28%, #000 72%);
   }
 }
 
