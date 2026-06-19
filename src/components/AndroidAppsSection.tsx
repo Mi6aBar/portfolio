@@ -79,6 +79,19 @@ export function AndroidAppsSection() {
           title={t.apps.title}
           sectionId="apps"
           contentClassName="flex flex-col gap-3 md:gap-5"
+          preview={
+            <span className="flex items-center gap-2 flex-wrap">
+              {ANDROID_APPS.map((project) => (
+                <img
+                  key={project.id}
+                  src={project.iconUrl ?? project.images[0]}
+                  alt=""
+                  loading="lazy"
+                  className="w-9 h-9 rounded-xl object-cover border border-white/10 shrink-0"
+                />
+              ))}
+            </span>
+          }
         >
           <div className="md:hidden grid grid-cols-1 gap-3">
             {ANDROID_APPS.map((project, index) => (

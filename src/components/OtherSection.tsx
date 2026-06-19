@@ -13,14 +13,44 @@ export function OtherSection() {
       className="max-md:py-0 md:py-8 px-4 sm:px-6 w-full bg-[#0F0F0F] md:border-t md:border-white/5 md:bg-gradient-to-b md:from-transparent md:to-white/[0.02] scroll-mt-11"
     >
       <div className="max-w-7xl mx-auto">
-        <MobileSectionSpoiler title={t.music.title} sectionId="music">
+        <MobileSectionSpoiler
+          title={t.music.title}
+          sectionId="music"
+          preview={
+            <span className="flex items-center gap-3 w-full">
+              <img
+                src={MUSIC.coverUrl}
+                alt=""
+                loading="lazy"
+                className="w-11 h-11 rounded-lg object-cover border border-white/10 shrink-0"
+              />
+              <span className="min-w-0 flex-1 text-left">
+                <span className="block text-sm truncate text-white/90">{MUSIC.albumTitle}</span>
+                <span className="block text-[10px] uppercase tracking-widest text-white/40 truncate">
+                  {MUSIC.artist}
+                </span>
+              </span>
+              <span className="flex items-center gap-1 shrink-0">
+                {MUSIC.platforms.slice(0, 4).map((platform) => (
+                  <img
+                    key={platform.id}
+                    src={platform.iconUrl}
+                    alt=""
+                    loading="lazy"
+                    className="w-5 h-5 object-contain opacity-80"
+                  />
+                ))}
+              </span>
+            </span>
+          }
+        >
           <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,320px)_1fr] gap-3 sm:gap-4 lg:gap-8 items-start">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className="max-md:p-0 max-md:rounded-none max-md:border-0 max-md:bg-transparent max-md:shadow-none rounded-2xl glass-card glass-card-hover p-4 sm:p-5 flex flex-col gap-4 w-full min-w-0 max-md:items-center"
+              className="rounded-2xl glass-card glass-card-hover p-4 sm:p-5 flex flex-col gap-4 w-full min-w-0 max-md:items-center"
             >
               <a
                 href={MUSIC.albumLink}
@@ -28,15 +58,17 @@ export function OtherSection() {
                 rel="noopener noreferrer"
                 className="group block w-full max-w-[240px] mx-auto"
               >
-                <img
-                  src={MUSIC.coverUrl}
-                  alt={MUSIC.albumTitle}
-                  loading="lazy"
-                  className="w-full max-h-[220px] sm:max-h-[260px] object-contain group-hover:scale-[1.02] transition-transform duration-300"
-                />
+                <div className="rounded-xl overflow-hidden bg-[#0F0F0F] p-2.5 border border-white/[0.06]">
+                  <img
+                    src={MUSIC.coverUrl}
+                    alt={MUSIC.albumTitle}
+                    loading="lazy"
+                    className="w-full max-h-[200px] sm:max-h-[260px] object-contain rounded-lg group-hover:scale-[1.02] transition-transform duration-300"
+                  />
+                </div>
               </a>
 
-              <div className="flex flex-col gap-3 w-full max-md:items-center max-md:text-center">
+              <div className="flex flex-col gap-3 w-full max-md:items-center max-md:text-center max-md:max-w-[320px] max-md:mx-auto">
                 <div className="max-md:w-full">
                   <a
                     href={MUSIC.artistLink}
@@ -54,13 +86,13 @@ export function OtherSection() {
                   href={MUSIC.bandlink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-1.5 w-full max-w-[320px] px-3 py-2.5 rounded-xl glass-inset border border-amber-400/30 text-[11px] uppercase tracking-widest text-amber-400 hover:border-amber-400/50 transition-colors"
+                  className="inline-flex items-center justify-center gap-1.5 w-full px-3 py-2.5 rounded-xl glass-inset border border-amber-400/30 text-[11px] uppercase tracking-widest text-amber-400 hover:border-amber-400/50 transition-colors"
                 >
                   {t.music.listenAll}
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </a>
 
-                <div className="w-full max-md:max-w-[320px]">
+                <div className="w-full">
                   <p className="text-[10px] uppercase tracking-widest text-white/40 mb-2 max-md:text-center">
                     {t.music.alsoOn}
                   </p>
@@ -98,36 +130,6 @@ export function OtherSection() {
                 </a>
               </div>
             </motion.div>
-
-            <div className="md:hidden flex flex-col gap-2 w-full max-w-[320px] mx-auto">
-              {MUSIC.tracks.map((track, index) => (
-                <motion.a
-                  key={track.id}
-                  href={track.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-30px" }}
-                  transition={{ duration: 0.4, ease: "easeOut", delay: index * 0.05 }}
-                  className="music-track-card flex items-center justify-between gap-3 px-3 py-3 rounded-2xl glass-card glass-card-hover"
-                >
-                  <div className="flex items-center gap-2 min-w-0">
-                    <Music2 className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                    <div className="min-w-0">
-                      <p className="text-sm truncate">{track.title}</p>
-                      <span className="text-[10px] uppercase tracking-widest text-white/40">
-                        {MUSIC.artist}
-                      </span>
-                    </div>
-                  </div>
-                  <span className="shrink-0 inline-flex items-center gap-1 text-[10px] uppercase tracking-widest text-white/60">
-                    {t.music.listen}
-                    <ArrowUpRight className="w-3 h-3" />
-                  </span>
-                </motion.a>
-              ))}
-            </div>
 
             <div className="hidden md:flex flex-col gap-3 min-w-0">
               {MUSIC.tracks.map((track, index) => (

@@ -138,10 +138,26 @@ export function TelegramSection() {
   return (
     <section
       id="telegram"
-      className="relative z-10 overflow-visible max-md:py-0 md:py-12 px-4 sm:px-6 w-full bg-[#0F0F0F] -mt-10 sm:-mt-16 md:-mt-52 pt-14 sm:pt-20 md:pt-10 md:border-b md:border-white/5 scroll-mt-11"
+      className="relative z-10 overflow-visible max-md:py-0 md:py-12 px-4 sm:px-6 w-full bg-[#0F0F0F] -mt-10 sm:-mt-16 md:-mt-36 pt-14 sm:pt-20 md:pt-10 md:border-b md:border-white/5 scroll-mt-11"
     >
       <div className="max-w-7xl mx-auto overflow-visible">
-        <MobileSectionSpoiler title={t.telegram.title} sectionId="telegram">
+        <MobileSectionSpoiler
+          title={t.telegram.title}
+          sectionId="telegram"
+          preview={
+            <span className="flex items-center gap-2 flex-wrap">
+              {TELEGRAM_PROJECTS.map((project) => (
+                <img
+                  key={project.id}
+                  src={project.images[0]}
+                  alt=""
+                  loading="lazy"
+                  className="w-9 h-9 rounded-full object-cover border border-white/10 shrink-0"
+                />
+              ))}
+            </span>
+          }
+        >
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 overflow-visible">
             {TELEGRAM_PROJECTS.map((project, index) => (
               <TelegramCard key={project.id} project={project} index={index} />

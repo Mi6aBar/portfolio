@@ -6,6 +6,8 @@ type MobileSectionSpoilerProps = {
   title: string;
   sectionId: string;
   children: ReactNode;
+  /** Icon strip shown under the title when collapsed (mobile only) */
+  preview?: ReactNode;
   /** Extra classes on the desktop title block */
   titleClassName?: string;
   /** Extra classes on the collapsible content wrapper */
@@ -16,6 +18,7 @@ export function MobileSectionSpoiler({
   title,
   sectionId,
   children,
+  preview,
   titleClassName = "mb-5 sm:mb-6",
   contentClassName = "",
 }: MobileSectionSpoilerProps) {
@@ -37,18 +40,23 @@ export function MobileSectionSpoiler({
     <>
       <button
         type="button"
-        className="md:hidden w-full flex items-center justify-between gap-3 py-2.5 text-left bg-[#0F0F0F] group"
+        className="md:hidden w-full flex flex-col gap-2 py-2.5 text-left bg-[#0F0F0F] group"
         onClick={() => setOpen((current) => !current)}
         aria-expanded={open}
         aria-controls={`${sectionId}-content`}
       >
-        <h2 className="text-xl tracking-tighter">{title}</h2>
-        <ChevronDown
-          className={`w-5 h-5 shrink-0 text-white/40 group-hover:text-white/70 transition-transform duration-300 ${
-            open ? "rotate-180" : ""
-          }`}
-          aria-hidden="true"
-        />
+        <span className="flex items-center justify-between gap-3 w-full">
+          <h2 className="text-xl tracking-tighter">{title}</h2>
+          <ChevronDown
+            className={`w-5 h-5 shrink-0 text-white/40 group-hover:text-white/70 transition-transform duration-300 ${
+              open ? "rotate-180" : ""
+            }`}
+            aria-hidden="true"
+          />
+        </span>
+        {!open && preview && (
+          <span className="block w-full pointer-events-none">{preview}</span>
+        )}
       </button>
 
       <motion.div
