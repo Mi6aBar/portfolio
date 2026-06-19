@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "motion/react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import type { ImageAspect } from "../data";
@@ -15,12 +16,10 @@ export function ScreenshotLightbox({
   images,
   initialIndex,
   title,
-  aspect = "portrait",
   onClose,
 }: ScreenshotLightboxProps) {
   const [index, setIndex] = useState(initialIndex);
   const touchStartX = useRef<number | null>(null);
-  const isLandscape = aspect === "landscape";
 
   useEffect(() => {
     setIndex(initialIndex);
@@ -70,9 +69,9 @@ export function ScreenshotLightbox({
 
   if (images.length === 0) return null;
 
-  return (
+  return createPortal(
     <motion.div
-      className="fixed inset-0 z-[200] flex flex-col bg-[#050505]/96 backdrop-blur-sm"
+      className="fixed inset-0 z-[200] w-screen h-[100dvh] bg-[#050505]/96 backdrop-blur-sm"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -83,10 +82,31 @@ export function ScreenshotLightbox({
       onClick={onClose}
     >
       <div
-        className="flex items-center justify-between gap-3 px-4 sm:px-6 py-3 sm:py-4"
+        className="absolute inset-0 flex items-center justify-center p-2 sm:p-4"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
         onClick={(event) => event.stopPropagation()}
       >
-        <div className="min-w-0">
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.img
+            key={images[index]}
+            src={images[index]}
+            alt={title ? `${title} screenshot ${index + 1}` : `Screenshot ${index + 1}`}
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="max-h-[100dvh] max-w-[100vw] h-auto w-auto object-contain select-none"
+            draggable={false}
+          />
+        </AnimatePresence>
+      </div>
+
+      <div
+        className="absolute top-0 inset-x-0 flex items-center justify-between gap-3 px-4 sm:px-6 py-3 sm:py-4 bg-gradient-to-b from-[#050505]/80 to-transparent pointer-events-none"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <div className="min-w-0 pointer-events-auto">
           {title && (
             <p className="text-[10px] uppercase tracking-widest text-white/40 truncate">
               {title}
@@ -99,75 +119,57 @@ export function ScreenshotLightbox({
         <button
           type="button"
           onClick={onClose}
-          className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-white/5 text-white/80 hover:text-white hover:border-white/25 transition-colors"
+          className="pointer-events-auto inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-black/40 text-white/80 hover:text-white hover:border-white/25 transition-colors"
           aria-label="Закрыть"
         >
           <X className="w-5 h-5" />
         </button>
       </div>
 
-      <div
-        className="relative flex-1 flex items-center justify-center px-3 sm:px-10 pb-6 min-h-0"
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-        onClick={(event) => event.stopPropagation()}
-      >
-        {images.length > 1 && (
-          <>
-            <button
-              type="button"
-              onClick={goPrev}
-              className="absolute left-2 sm:left-4 z-10 inline-flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-white/10 bg-black/40 text-white/80 hover:text-white hover:border-white/25 transition-colors"
-              aria-label="Предыдущий скриншот"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              type="button"
-              onClick={goNext}
-              className="absolute right-2 sm:right-4 z-10 inline-flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-white/10 bg-black/40 text-white/80 hover:text-white hover:border-white/25 transition-colors"
-              aria-label="Следующий скриншот"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </>
-        )}
-
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.img
-            key={images[index]}
-            src={images[index]}
-            alt={title ? `${title} screenshot ${index + 1}` : `Screenshot ${index + 1}`}
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.98 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className={`max-h-[calc(100vh-8rem)] w-auto max-w-full select-none ${
-              isLandscape ? "object-contain" : "object-contain"
-            }`}
-            draggable={false}
-          />
-        </AnimatePresence>
-      </div>
-
       {images.length > 1 && (
-        <div
-          className="flex items-center justify-center gap-2 px-4 pb-5"
-          onClick={(event) => event.stopPropagation()}
-        >
-          {images.map((src, dotIndex) => (
-            <button
-              key={src}
-              type="button"
-              onClick={() => setIndex(dotIndex)}
-              className={`h-1.5 rounded-full transition-all ${
-                dotIndex === index ? "w-6 bg-white" : "w-1.5 bg-white/30 hover:bg-white/50"
-              }`}
-              aria-label={`Скриншот ${dotIndex + 1}`}
-            />
-          ))}
-        </div>
+        <>
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              goPrev();
+            }}
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 inline-flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-white/10 bg-black/40 text-white/80 hover:text-white hover:border-white/25 transition-colors"
+            aria-label="Предыдущий скриншот"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              goNext();
+            }}
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 inline-flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-white/10 bg-black/40 text-white/80 hover:text-white hover:border-white/25 transition-colors"
+            aria-label="Следующий скриншот"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
+          <div
+            className="absolute bottom-0 inset-x-0 flex items-center justify-center gap-2 px-4 pb-5 pt-8 bg-gradient-to-t from-[#050505]/80 to-transparent pointer-events-none"
+            onClick={(event) => event.stopPropagation()}
+          >
+            {images.map((src, dotIndex) => (
+              <button
+                key={src}
+                type="button"
+                onClick={() => setIndex(dotIndex)}
+                className={`pointer-events-auto h-1.5 rounded-full transition-all ${
+                  dotIndex === index ? "w-6 bg-white" : "w-1.5 bg-white/30 hover:bg-white/50"
+                }`}
+                aria-label={`Скриншот ${dotIndex + 1}`}
+              />
+            ))}
+          </div>
+        </>
       )}
-    </motion.div>
+    </motion.div>,
+    document.body,
   );
 }

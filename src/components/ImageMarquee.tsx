@@ -28,16 +28,16 @@ export function ImageMarquee({
   const isLandscape = aspect === "landscape";
 
   const frameClass = isLandscape
-    ? "w-[200px] sm:w-[240px] md:w-[300px] aspect-video"
-    : "w-[130px] sm:w-[160px] md:w-[200px] h-[220px] sm:h-[250px] md:h-[280px]";
+    ? "w-[170px] sm:w-[240px] md:w-[300px] aspect-video"
+    : "w-[108px] sm:w-[160px] md:w-[200px] h-[190px] sm:h-[250px] md:h-[280px]";
 
   const imageClass = isLandscape
     ? "w-full h-full object-cover rounded-md sm:rounded-lg"
     : "w-full h-full object-contain rounded-lg md:rounded-xl";
 
   const containerHeight = isLandscape
-    ? "h-[130px] sm:h-[160px] md:h-[190px]"
-    : "h-[230px] sm:h-[260px] md:h-[290px]";
+    ? "h-[110px] sm:h-[160px] md:h-[190px]"
+    : "h-[200px] sm:h-[260px] md:h-[290px]";
 
   const trackClass = [
     "marquee-track flex gap-3 sm:gap-4 md:gap-5 absolute left-0",

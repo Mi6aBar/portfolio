@@ -24,6 +24,25 @@ body {
   mask-image: linear-gradient(to right, #000 52%, transparent 100%);
 }
 
+@media (max-width: 767px) {
+  .hero-photo-fade {
+    -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+  }
+
+  .hero-social-btn__inner {
+    padding: 0.5rem 0.85rem;
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-photo-fade {
+    -webkit-mask-image: linear-gradient(to right, #000 52%, transparent 100%);
+    mask-image: linear-gradient(to right, #000 52%, transparent 100%);
+  }
+}
+
 .hero-bottom-feather {
   background: linear-gradient(
     to bottom,

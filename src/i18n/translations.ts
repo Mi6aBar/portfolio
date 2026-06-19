@@ -12,7 +12,7 @@ export const translations = {
     header: {
       home: "mishabar",
       nav: {
-        telegram: "Telegram",
+        telegram: "Каналы и боты",
         apps: "Приложения",
         music: "Музыка",
       },
@@ -24,6 +24,7 @@ export const translations = {
       instagram: "Instagram",
     },
     telegram: {
+      title: "Каналы и боты",
       open: "Открыть",
       platforms: {
         channel: "Channel",
@@ -36,6 +37,7 @@ export const translations = {
       },
     },
     apps: {
+      title: "Приложения",
       platform: "Android App",
       rustore: "RuStore",
       openRustore: "Открыть в RuStore",
@@ -43,7 +45,6 @@ export const translations = {
       collapse: "Свернуть",
     },
     music: {
-      sectionLabel: "Другое",
       title: "МУЗЫКА",
       listenAll: "Слушать на всех площадках",
       alsoOn: "Доступно на:",
@@ -121,7 +122,7 @@ export const translations = {
     header: {
       home: "mishabar",
       nav: {
-        telegram: "Telegram",
+        telegram: "Channels & bots",
         apps: "Apps",
         music: "Music",
       },
@@ -133,6 +134,7 @@ export const translations = {
       instagram: "Instagram",
     },
     telegram: {
+      title: "Channels & bots",
       open: "Open",
       platforms: {
         channel: "Channel",
@@ -145,6 +147,7 @@ export const translations = {
       },
     },
     apps: {
+      title: "Apps",
       platform: "Android App",
       rustore: "RuStore",
       openRustore: "Open in RuStore",
@@ -152,7 +155,6 @@ export const translations = {
       collapse: "Collapse",
     },
     music: {
-      sectionLabel: "Other",
       title: "MUSIC",
       listenAll: "Listen on all platforms",
       alsoOn: "Also available on",

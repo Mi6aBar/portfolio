@@ -4,6 +4,7 @@ import { ArrowUpRight, ChevronDown } from "lucide-react";
 import { ANDROID_APPS, Project, RUSTORE_ICON } from "../data";
 import { useLanguage, useProjectDescription } from "../i18n/LanguageContext";
 import { AppExpandedPanel } from "./AppExpandedPanel";
+import { MobileSectionSpoiler } from "./MobileSectionSpoiler";
 
 const borderColors = [
   "border-orange-500/50 ring-orange-500/25",
@@ -55,7 +56,7 @@ function AppCard({
         scale: { type: "spring", stiffness: 380, damping: 22 },
       }}
       aria-expanded={isExpanded}
-      className={`group flex flex-col items-center text-center p-5 sm:p-6 rounded-2xl glass-card glass-card-hover transition-colors h-full will-change-transform cursor-pointer ${
+      className={`group flex flex-col items-center text-center p-4 sm:p-6 rounded-2xl glass-card glass-card-hover transition-colors h-full will-change-transform cursor-pointer ${
         isExpanded
           ? `${borderColor} ring-1 glass-card-active`
           : "hover:border-white/25"
@@ -108,59 +109,83 @@ function AppCard({
 }
 
 export function AndroidAppsSection() {
+  const { t } = useLanguage();
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+  const prevExpandedIdRef = useRef<string | null>(null);
   const expandedIndex = ANDROID_APPS.findIndex((app) => app.id === expandedId);
   const expandedProject = expandedIndex >= 0 ? ANDROID_APPS[expandedIndex] : null;
 
   useEffect(() => {
-    if (!expandedId) return;
+    const wasExpanded = prevExpandedIdRef.current;
+    prevExpandedIdRef.current = expandedId;
 
-    const timeout = window.setTimeout(() => {
-      panelRef.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    }, 180);
+    if (expandedId) {
+      const timeout = window.setTimeout(() => {
+        panelRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }, 180);
 
-    return () => window.clearTimeout(timeout);
+      return () => window.clearTimeout(timeout);
+    }
+
+    if (wasExpanded) {
+      const timeout = window.setTimeout(() => {
+        sectionRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 120);
+
+      return () => window.clearTimeout(timeout);
+    }
   }, [expandedId]);
 
   return (
     <section
+      ref={sectionRef}
       id="apps"
       className="py-8 sm:py-10 md:py-12 px-4 sm:px-6 w-full border-b border-white/5 bg-gradient-to-b from-white/[0.02] to-transparent scroll-mt-11"
     >
-      <div className="max-w-7xl mx-auto flex flex-col gap-4 sm:gap-5">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-          {ANDROID_APPS.map((project, index) => (
-            <AppCard
-              key={project.id}
-              project={project}
-              index={index}
-              isExpanded={expandedId === project.id}
-              onToggle={() =>
-                setExpandedId((current) => (current === project.id ? null : project.id))
-              }
-            />
-          ))}
-        </div>
+      <div className="max-w-7xl mx-auto">
+        <MobileSectionSpoiler
+          title={t.apps.title}
+          sectionId="apps"
+          contentClassName="flex flex-col gap-4 sm:gap-5"
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+            {ANDROID_APPS.map((project, index) => (
+              <AppCard
+                key={project.id}
+                project={project}
+                index={index}
+                isExpanded={expandedId === project.id}
+                onToggle={() =>
+                  setExpandedId((current) => (current === project.id ? null : project.id))
+                }
+              />
+            ))}
+          </div>
 
-        <AnimatePresence mode="wait">
-          {expandedProject && expandedIndex >= 0 && (
-            <motion.div
-              ref={panelRef}
-              key={expandedProject.id}
-              className="app-expanded-panel"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-            >
-              <AppExpandedPanel project={expandedProject} index={expandedIndex} />
-            </motion.div>
-          )}
-        </AnimatePresence>
+          <AnimatePresence mode="wait">
+            {expandedProject && expandedIndex >= 0 && (
+              <motion.div
+                ref={panelRef}
+                key={expandedProject.id}
+                className="app-expanded-panel"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+              >
+                <AppExpandedPanel project={expandedProject} index={expandedIndex} />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </MobileSectionSpoiler>
       </div>
     </section>
   );

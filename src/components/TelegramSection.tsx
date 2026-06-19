@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { ArrowUpRight, Instagram, MessageCircle } from "lucide-react";
 import { TELEGRAM_PROJECTS, type ProjectPlatform } from "../data";
 import { useLanguage, useProjectDescription } from "../i18n/LanguageContext";
+import { MobileSectionSpoiler } from "./MobileSectionSpoiler";
 
 function TelegramIcon({ className }: { className?: string }) {
   return (
@@ -72,15 +73,15 @@ function TelegramCard({
       }}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.04 }}
-      whileTap={{ scale: 1.02 }}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.99 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{
         opacity: { duration: 0.5, ease: "easeOut", delay: index * 0.06 },
         y: { duration: 0.5, ease: "easeOut", delay: index * 0.06 },
         scale: { type: "spring", stiffness: 380, damping: 22 },
       }}
-      className="group relative z-0 hover:z-30 flex flex-col items-center text-center p-5 sm:p-6 md:p-7 rounded-2xl glass-card glass-card-hover hover:border-sky-400/40 transition-colors h-full will-change-transform cursor-pointer"
+      className="group relative z-0 hover:z-30 flex flex-col items-center text-center p-4 sm:p-6 md:p-7 rounded-2xl glass-card glass-card-hover hover:border-sky-400/40 transition-colors h-full will-change-transform cursor-pointer"
     >
       <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-sky-400/50 transition-colors shadow-xl mb-4 sm:mb-5 shrink-0">
         <img
@@ -132,17 +133,21 @@ function TelegramCard({
 }
 
 export function TelegramSection() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="telegram"
-      className="relative z-10 overflow-visible py-8 sm:py-10 md:py-12 px-4 sm:px-6 w-full -mt-16 sm:-mt-20 md:-mt-24 pt-16 sm:pt-20 md:pt-24 border-b border-white/5 scroll-mt-11"
+      className="relative z-10 overflow-visible py-8 sm:py-10 md:py-12 px-4 sm:px-6 w-full -mt-8 sm:-mt-16 md:-mt-24 pt-12 sm:pt-20 md:pt-24 border-b border-white/5 scroll-mt-11"
     >
       <div className="max-w-7xl mx-auto overflow-visible">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 overflow-visible">
-          {TELEGRAM_PROJECTS.map((project, index) => (
-            <TelegramCard key={project.id} project={project} index={index} />
-          ))}
-        </div>
+        <MobileSectionSpoiler title={t.telegram.title} sectionId="telegram">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 overflow-visible">
+            {TELEGRAM_PROJECTS.map((project, index) => (
+              <TelegramCard key={project.id} project={project} index={index} />
+            ))}
+          </div>
+        </MobileSectionSpoiler>
       </div>
     </section>
   );

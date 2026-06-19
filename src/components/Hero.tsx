@@ -18,25 +18,26 @@ export function Hero() {
 
   return (
     <section id="hero" className="relative z-0 overflow-x-hidden bg-[#0F0F0F]">
-      <div className="absolute top-4 right-4 sm:top-5 sm:right-6 z-20">
+      <div className="absolute top-4 right-4 sm:top-5 sm:right-6 z-20 hidden md:block">
         <LanguageToggle />
       </div>
-      <div className="relative flex min-h-[320px] sm:min-h-[360px] md:min-h-[400px]">
-        <div className="absolute inset-y-0 left-0 w-[58%] sm:w-[46%] md:w-[42%] lg:w-[38%] max-w-[560px]">
+
+      <div className="relative flex flex-col md:flex-row md:min-h-[400px]">
+        <div className="relative h-48 sm:h-56 md:absolute md:inset-y-0 md:left-0 md:h-auto md:w-[46%] lg:w-[38%] md:max-w-[560px] shrink-0">
           <img
             src="./avatar.png"
             alt="mishabar"
-            className="h-full w-full object-cover object-left hero-photo-fade"
+            className="h-full w-full object-cover object-[center_18%] md:object-left hero-photo-fade"
           />
         </div>
 
         <motion.div
-          initial={{ opacity: 0, x: 24 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative z-10 ml-[42%] sm:ml-[38%] md:ml-[36%] flex flex-1 flex-col justify-center py-8 sm:py-10 pr-4 sm:pr-8 md:pr-12 pl-3 sm:pl-6 text-left"
+          className="relative z-10 w-full md:ml-[38%] lg:ml-[36%] flex flex-1 flex-col justify-center px-4 sm:px-6 md:pr-12 md:pl-6 py-6 sm:py-8 md:py-10 text-left"
         >
-          <h1 className="hero-nickname text-3xl sm:text-4xl md:text-5xl font-sans tracking-[0.35em] lowercase not-italic mb-2 w-fit">
+          <h1 className="hero-nickname text-[1.65rem] leading-none sm:text-4xl md:text-5xl font-sans tracking-[0.16em] sm:tracking-[0.28em] md:tracking-[0.35em] lowercase not-italic mb-2 max-w-full">
             {"mishabar".split("").map((letter, index, letters) => {
               const progress = letters.length <= 1 ? 0 : index / (letters.length - 1);
 
@@ -51,22 +52,22 @@ export function Hero() {
               );
             })}
           </h1>
-          <p className="text-[11px] text-white/45 uppercase tracking-widest mb-3">
+          <p className="text-[10px] sm:text-[11px] text-white/45 uppercase tracking-[0.18em] sm:tracking-widest mb-2 sm:mb-3">
             {t.hero.role}
           </p>
-          <p className="text-sm sm:text-base text-white/60 mb-5 leading-relaxed max-w-lg">
+          <p className="text-[13px] sm:text-base text-white/60 mb-4 sm:mb-5 leading-relaxed max-w-lg">
             {t.hero.bio}
           </p>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-3 w-full max-w-xl">
             <a
               href={TELEGRAM_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="hero-social-btn hero-social-btn--telegram text-[11px] uppercase tracking-[0.2em]"
+              className="hero-social-btn hero-social-btn--telegram text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.2em] w-full sm:w-auto"
             >
               <span className="hero-social-btn__glow" aria-hidden="true" />
-              <span className="hero-social-btn__inner">
-                <TelegramIcon className="w-3.5 h-3.5" />
+              <span className="hero-social-btn__inner w-full sm:w-auto justify-center">
+                <TelegramIcon className="w-3.5 h-3.5 shrink-0" />
                 <span>{t.hero.telegram}</span>
               </span>
             </a>
@@ -74,22 +75,23 @@ export function Hero() {
               href={INSTAGRAM_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="hero-social-btn hero-social-btn--instagram text-[11px] uppercase tracking-[0.2em]"
+              className="hero-social-btn hero-social-btn--instagram text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.2em] w-full sm:w-auto"
             >
               <span className="hero-social-btn__glow" aria-hidden="true" />
-              <span className="hero-social-btn__inner">
-                <Instagram className="w-3.5 h-3.5" />
+              <span className="hero-social-btn__inner w-full sm:w-auto justify-center">
+                <Instagram className="w-3.5 h-3.5 shrink-0" />
                 <span>{t.hero.instagram}</span>
               </span>
             </a>
             <a
               href={EMAIL_LINK}
-              className="hero-social-btn hero-social-btn--email text-[11px] tracking-normal normal-case"
+              className="hero-social-btn hero-social-btn--email text-[10px] sm:text-[11px] tracking-normal normal-case w-full sm:w-auto"
             >
               <span className="hero-social-btn__glow" aria-hidden="true" />
-              <span className="hero-social-btn__inner">
+              <span className="hero-social-btn__inner w-full sm:w-auto justify-center">
                 <Mail className="w-3.5 h-3.5 shrink-0" />
-                <span>mishabar1997@gmail.com</span>
+                <span className="sm:hidden">mail</span>
+                <span className="hidden sm:inline">mishabar1997@gmail.com</span>
               </span>
             </a>
           </div>
@@ -97,7 +99,7 @@ export function Hero() {
       </div>
 
       <div
-        className="hero-bottom-feather pointer-events-none absolute inset-x-0 bottom-0 h-24 sm:h-32 md:h-36 z-[1]"
+        className="hero-bottom-feather pointer-events-none absolute inset-x-0 bottom-0 h-16 sm:h-24 md:h-36 z-[1]"
         aria-hidden="true"
       />
     </section>

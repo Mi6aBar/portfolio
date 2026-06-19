@@ -25,8 +25,8 @@ export function AppExpandedPanel({ project, index }: AppExpandedPanelProps) {
 
   return (
     <div className="rounded-2xl glass-card overflow-hidden">
-      <div className="px-4 sm:px-6 pt-5 sm:pt-6 pb-4 border-b border-white/5">
-        <h2 className="text-2xl sm:text-3xl tracking-tighter mb-2 text-white">
+      <div className="px-4 sm:px-6 pt-4 sm:pt-6 pb-3 sm:pb-4 border-b border-white/5">
+        <h2 className="text-xl sm:text-2xl md:text-3xl tracking-tighter mb-2 text-white">
           {project.title.toUpperCase()}
         </h2>
         <p className="text-sm text-white/65 leading-snug max-w-2xl mb-3">{description}</p>

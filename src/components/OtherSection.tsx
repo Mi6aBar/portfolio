@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { ArrowUpRight, Music2 } from "lucide-react";
 import { MUSIC } from "../data";
 import { useLanguage } from "../i18n/LanguageContext";
+import { MobileSectionSpoiler } from "./MobileSectionSpoiler";
 
 export function OtherSection() {
   const { t } = useLanguage();
@@ -12,20 +13,8 @@ export function OtherSection() {
       className="py-6 sm:py-8 px-4 sm:px-6 w-full border-t border-white/5 bg-gradient-to-b from-transparent to-white/[0.02] scroll-mt-11"
     >
       <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="mb-5 sm:mb-6"
-        >
-          <span className="text-[10px] uppercase tracking-widest text-amber-400">
-            {t.music.sectionLabel}
-          </span>
-          <h2 className="text-xl sm:text-2xl tracking-tighter mt-1">{t.music.title}</h2>
-        </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(200px,260px)_1fr] gap-4 lg:gap-6 items-start">
+        <MobileSectionSpoiler title={t.music.title} sectionId="music">
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(200px,260px)_1fr] gap-4 lg:gap-6 items-start">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -118,7 +107,7 @@ export function OtherSection() {
                 transition={{ duration: 0.4, ease: "easeOut", delay: index * 0.05 }}
                 className="rounded-xl glass-card overflow-hidden"
               >
-                <div className="flex items-center justify-between gap-2 px-3 sm:px-4 py-2 border-b border-white/5">
+                <div className="flex flex-col gap-2 px-3 py-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-2 sm:px-4 sm:py-2 border-b border-white/5">
                   <div className="flex items-center gap-2 min-w-0">
                     <Music2 className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                     <div className="min-w-0">
@@ -154,7 +143,8 @@ export function OtherSection() {
               </motion.div>
             ))}
           </div>
-        </div>
+          </div>
+        </MobileSectionSpoiler>
       </div>
     </section>
   );

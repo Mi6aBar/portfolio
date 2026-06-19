@@ -12,11 +12,11 @@ function TelegramIcon({ className }: { className?: string }) {
   );
 }
 
+const navClass =
+  "text-[10px] uppercase tracking-widest text-white/45 hover:text-white transition-colors shrink-0 whitespace-nowrap";
+
 const contactClass =
   "inline-flex items-center gap-1 text-[10px] uppercase tracking-widest text-white/45 hover:text-sky-400 transition-colors shrink-0";
-
-const navClass =
-  "text-[10px] uppercase tracking-widest text-white/45 hover:text-white transition-colors shrink-0";
 
 export function SiteHeader() {
   const { t } = useLanguage();
@@ -42,47 +42,64 @@ export function SiteHeader() {
       }`}
       aria-hidden={!visible}
     >
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 h-11 flex items-center justify-between gap-2 sm:gap-4">
-        <a
-          href="#top"
-          className="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-white/80 hover:text-orange-400 transition-colors shrink-0"
-        >
-          {t.header.home}
-        </a>
+      <div className="max-w-7xl mx-auto px-3 sm:px-6">
+        <div className="h-11 flex items-center justify-between gap-2 sm:gap-4">
+          <a
+            href="#top"
+            className="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-white/80 hover:text-orange-400 transition-colors shrink-0"
+          >
+            {t.header.home}
+          </a>
 
-        <nav className="hidden md:flex items-center gap-3 lg:gap-4 min-w-0" aria-label="Sections">
-          <a href="#telegram" className={navClass}>
-            {t.header.nav.telegram}
-          </a>
-          <a href="#apps" className={navClass}>
-            {t.header.nav.apps}
-          </a>
-          <a href="#music" className={navClass}>
-            {t.header.nav.music}
-          </a>
-        </nav>
+          <nav
+            className="flex md:hidden items-center gap-3 min-w-0 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+            aria-label="Sections"
+          >
+            <a href="#telegram" className={navClass}>
+              {t.header.nav.telegram}
+            </a>
+            <a href="#apps" className={navClass}>
+              {t.header.nav.apps}
+            </a>
+            <a href="#music" className={navClass}>
+              {t.header.nav.music}
+            </a>
+          </nav>
 
-        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-          <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto scrollbar-none">
-            <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className={contactClass}>
-              <TelegramIcon className="w-3.5 h-3.5" />
-              <span className="hidden lg:inline">{t.hero.telegram}</span>
+          <nav className="hidden md:flex items-center gap-3 lg:gap-4 min-w-0" aria-label="Sections">
+            <a href="#telegram" className={navClass}>
+              {t.header.nav.telegram}
             </a>
-            <a
-              href={INSTAGRAM_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${contactClass} hover:text-pink-500`}
-            >
-              <Instagram className="w-3.5 h-3.5" />
-              <span className="hidden lg:inline">{t.hero.instagram}</span>
+            <a href="#apps" className={navClass}>
+              {t.header.nav.apps}
             </a>
-            <a href={EMAIL_LINK} className={`${contactClass} hover:text-emerald-400 hidden sm:inline-flex`}>
-              <Mail className="w-3.5 h-3.5" />
-              <span className="hidden xl:inline">mail</span>
+            <a href="#music" className={navClass}>
+              {t.header.nav.music}
             </a>
+          </nav>
+
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            <div className="hidden sm:flex items-center gap-2 sm:gap-3">
+              <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className={contactClass}>
+                <TelegramIcon className="w-3.5 h-3.5" />
+                <span className="hidden lg:inline">{t.hero.telegram}</span>
+              </a>
+              <a
+                href={INSTAGRAM_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${contactClass} hover:text-pink-500`}
+              >
+                <Instagram className="w-3.5 h-3.5" />
+                <span className="hidden lg:inline">{t.hero.instagram}</span>
+              </a>
+              <a href={EMAIL_LINK} className={`${contactClass} hover:text-emerald-400 hidden md:inline-flex`}>
+                <Mail className="w-3.5 h-3.5" />
+                <span className="hidden xl:inline">mail</span>
+              </a>
+            </div>
+            <LanguageToggle />
           </div>
-          <LanguageToggle />
         </div>
       </div>
     </header>
