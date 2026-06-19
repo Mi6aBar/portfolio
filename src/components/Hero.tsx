@@ -24,11 +24,14 @@ export function Hero() {
 
       <div className="relative flex flex-col md:flex-row md:min-h-[400px]">
         <div className="relative h-48 sm:h-56 md:absolute md:inset-y-0 md:left-0 md:h-auto md:w-[46%] lg:w-[38%] md:max-w-[560px] shrink-0">
-          <img
-            src="./avatar.png"
-            alt="mishabar"
-            className="h-full w-full object-cover object-[center_18%] md:object-left hero-photo-fade"
-          />
+          <picture>
+            <source srcSet="./avatar.webp" type="image/webp" />
+            <img
+              src="./avatar.jpg"
+              alt="mishabar"
+              className="h-full w-full object-cover object-[center_18%] md:object-left hero-photo-fade"
+            />
+          </picture>
         </div>
 
         <motion.div

@@ -37,7 +37,7 @@ export function MobileSectionSpoiler({
     <>
       <button
         type="button"
-        className="md:hidden w-full flex items-center justify-between gap-3 rounded-xl glass-card glass-card-hover px-4 py-3.5 text-left group transition-colors"
+        className="md:hidden w-full flex items-center justify-between gap-3 py-3.5 text-left bg-[#0F0F0F] border-b border-white/[0.06] group"
         onClick={() => setOpen((current) => !current)}
         aria-expanded={open}
         aria-controls={`${sectionId}-content`}

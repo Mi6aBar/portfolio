@@ -148,7 +148,7 @@ export function AndroidAppsSection() {
     <section
       ref={sectionRef}
       id="apps"
-      className="py-8 sm:py-10 md:py-12 px-4 sm:px-6 w-full border-b border-white/5 bg-gradient-to-b from-white/[0.02] to-transparent scroll-mt-11"
+      className="py-8 sm:py-10 md:py-12 px-4 sm:px-6 w-full border-b border-white/5 md:bg-gradient-to-b md:from-white/[0.02] md:to-transparent scroll-mt-11"
     >
       <div className="max-w-7xl mx-auto">
         <MobileSectionSpoiler

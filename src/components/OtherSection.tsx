@@ -10,7 +10,7 @@ export function OtherSection() {
   return (
     <section
       id="music"
-      className="py-6 sm:py-8 px-4 sm:px-6 w-full border-t border-white/5 bg-gradient-to-b from-transparent to-white/[0.02] scroll-mt-11"
+      className="py-6 sm:py-8 px-4 sm:px-6 w-full border-t border-white/5 md:bg-gradient-to-b md:from-transparent md:to-white/[0.02] scroll-mt-11"
     >
       <div className="max-w-7xl mx-auto">
         <MobileSectionSpoiler title={t.music.title} sectionId="music">
@@ -20,7 +20,7 @@ export function OtherSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="rounded-xl glass-card overflow-hidden"
+            className="music-album-card rounded-xl glass-card overflow-hidden w-full max-w-[240px] sm:max-w-[260px] mx-auto lg:max-w-[260px] lg:mx-0"
           >
             <a
               href={MUSIC.albumLink}
@@ -28,12 +28,12 @@ export function OtherSection() {
               rel="noopener noreferrer"
               className="group block p-2 sm:p-3 glass-inset border-b border-white/5"
             >
-              <div className="rounded-lg overflow-hidden bg-[#111] flex items-center justify-center">
+              <div className="music-album-cover rounded-lg overflow-hidden bg-[#0F0F0F] flex items-center justify-center">
                 <img
                   src={MUSIC.coverUrl}
                   alt={MUSIC.albumTitle}
                   loading="lazy"
-                  className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform duration-300"
+                  className="w-full max-h-[220px] sm:max-h-[260px] object-contain group-hover:scale-[1.02] transition-transform duration-300"
                 />
               </div>
             </a>

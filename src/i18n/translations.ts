@@ -45,7 +45,7 @@ export const translations = {
       collapse: "Свернуть",
     },
     music: {
-      title: "МУЗЫКА",
+      title: "Музыка",
       listenAll: "Слушать на всех площадках",
       alsoOn: "Доступно на:",
       artistProfile: "Профиль исполнителя",
@@ -155,7 +155,7 @@ export const translations = {
       collapse: "Collapse",
     },
     music: {
-      title: "MUSIC",
+      title: "Music",
       listenAll: "Listen on all platforms",
       alsoOn: "Also available on",
       artistProfile: "Artist profile",
