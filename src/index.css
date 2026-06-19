@@ -83,38 +83,25 @@ body {
 
 @media (min-width: 768px) {
   .hero-photo-fade {
-    -webkit-mask-image:
-      linear-gradient(to bottom, #000 50%, rgb(0 0 0 / 0.55) 78%, transparent 100%),
-      linear-gradient(to right, #000 52%, transparent 100%);
-    mask-image:
-      linear-gradient(to bottom, #000 50%, rgb(0 0 0 / 0.55) 78%, transparent 100%),
-      linear-gradient(to right, #000 52%, transparent 100%);
-    -webkit-mask-composite: source-in;
-    mask-composite: intersect;
+    -webkit-mask-image: linear-gradient(to right, #000 54%, transparent 100%);
+    mask-image: linear-gradient(to right, #000 54%, transparent 100%);
+  }
+
+  .hero-photo-shell {
+    overflow: hidden;
   }
 
   .hero-photo-bottom-fade {
-    height: 11rem;
+    z-index: 2;
+    height: 13rem;
     background: linear-gradient(
       to bottom,
       rgb(15 15 15 / 0) 0%,
-      rgb(15 15 15 / 0.25) 35%,
-      rgb(15 15 15 / 0.72) 68%,
+      rgb(15 15 15 / 0.18) 28%,
+      rgb(15 15 15 / 0.55) 58%,
+      rgb(15 15 15 / 0.88) 82%,
       rgb(15 15 15 / 1) 100%
     );
-  }
-
-  .hero-bottom-feather {
-    background: linear-gradient(
-      to bottom,
-      rgb(15 15 15 / 0) 0%,
-      rgb(15 15 15 / 0.2) 30%,
-      rgb(15 15 15 / 0.65) 62%,
-      rgb(15 15 15 / 0.92) 82%,
-      rgb(15 15 15 / 1) 100%
-    );
-    backdrop-filter: blur(22px) saturate(140%);
-    -webkit-backdrop-filter: blur(22px) saturate(140%);
   }
 }
 
@@ -130,6 +117,22 @@ body {
   -webkit-backdrop-filter: blur(18px) saturate(130%);
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / 0.55) 45%, #000 100%);
   mask-image: linear-gradient(to bottom, transparent 0%, rgb(0 0 0 / 0.55) 45%, #000 100%);
+}
+
+@media (min-width: 768px) {
+  .hero-bottom-feather {
+    background: linear-gradient(
+      to bottom,
+      rgb(15 15 15 / 0) 0%,
+      rgb(15 15 15 / 0.15) 24%,
+      rgb(15 15 15 / 0.5) 52%,
+      rgb(15 15 15 / 0.82) 74%,
+      rgb(15 15 15 / 0.96) 88%,
+      rgb(15 15 15 / 1) 100%
+    );
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+  }
 }
 
 @media (prefers-reduced-transparency: reduce) {

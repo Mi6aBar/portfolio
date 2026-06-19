@@ -17,7 +17,7 @@ export default function App() {
       <SiteHeader />
       <main
         id="top"
-        className="min-h-screen bg-[#0F0F0F] text-white flex flex-col font-sans overflow-x-hidden scroll-smooth"
+        className="min-h-screen bg-[#0F0F0F] text-white flex flex-col font-sans max-md:overflow-x-hidden md:overflow-x-visible scroll-smooth"
       >
         <Hero />
         <TelegramSection />
