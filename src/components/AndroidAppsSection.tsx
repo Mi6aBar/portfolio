@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
-import { ArrowUpRight, ChevronDown } from "lucide-react";
+import { motion } from "motion/react";
+import { ArrowUpRight } from "lucide-react";
 import { ANDROID_APPS, Project, RUSTORE_ICON } from "../data";
 import { useLanguage, useProjectDescription } from "../i18n/LanguageContext";
 import { AppExpandedPanel } from "./AppExpandedPanel";
@@ -15,38 +14,24 @@ const linkHoverColors = [
   "hover:text-amber-400",
 ];
 
-function AppCard({
-  project,
-  index,
-  onExpand,
-}: {
-  project: Project;
-  index: number;
-  onExpand: () => void;
-}) {
+function AppCard({ project, index }: { project: Project; index: number }) {
   const { t } = useLanguage();
   const description = useProjectDescription(project.id);
   const linkHover = linkHoverColors[index % linkHoverColors.length];
   const iconSrc = project.iconUrl ?? project.images[0];
 
   return (
-    <motion.button
-      type="button"
-      onClick={onExpand}
+    <motion.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.99 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{
         opacity: { duration: 0.5, ease: "easeOut", delay: index * 0.05 },
         y: { duration: 0.5, ease: "easeOut", delay: index * 0.05 },
-        scale: { type: "spring", stiffness: 380, damping: 22 },
       }}
-      aria-expanded={false}
-      className="group flex flex-col items-center text-center p-4 sm:p-6 rounded-2xl glass-card glass-card-hover hover:border-white/25 transition-colors w-full h-full will-change-transform cursor-pointer"
+      className="flex flex-col items-center text-center p-4 sm:p-6 rounded-2xl glass-card glass-card-hover w-full h-full"
     >
-      <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-white/10 group-hover:border-white/20 transition-colors shadow-xl mb-4 shrink-0">
+      <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-white/10 shadow-xl mb-4 shrink-0">
         <img
           src={iconSrc}
           alt={project.title}
@@ -59,7 +44,7 @@ function AppCard({
         {project.title.toUpperCase()}
       </h3>
 
-      <p className="text-xs sm:text-sm text-white/55 leading-relaxed mb-4 flex-1 line-clamp-3">
+      <p className="text-xs sm:text-sm text-white/55 leading-relaxed mb-4 flex-1">
         {description}
       </p>
 
@@ -67,8 +52,7 @@ function AppCard({
         href={project.link}
         target="_blank"
         rel="noopener noreferrer"
-        onClick={(event) => event.stopPropagation()}
-        className={`inline-flex items-center gap-1.5 text-[10px] sm:text-xs uppercase tracking-widest text-white/70 ${linkHover} transition-colors border-b border-white/20 pb-1 hover:border-current mb-3`}
+        className={`inline-flex items-center gap-1.5 text-[10px] sm:text-xs uppercase tracking-widest text-white/70 ${linkHover} transition-colors border-b border-white/20 pb-1 hover:border-current`}
       >
         <img
           src={RUSTORE_ICON}
@@ -78,52 +62,15 @@ function AppCard({
         {t.apps.rustore}
         <ArrowUpRight className="w-3.5 h-3.5 shrink-0" />
       </a>
-
-      <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-widest text-white/35 group-hover:text-white/55 transition-colors">
-        {t.apps.expand}
-        <ChevronDown className="w-3.5 h-3.5" />
-      </span>
-    </motion.button>
+    </motion.div>
   );
 }
 
 export function AndroidAppsSection() {
   const { t } = useLanguage();
-  const [expandedId, setExpandedId] = useState<string | null>(null);
-  const sectionRef = useRef<HTMLElement>(null);
-  const panelRef = useRef<HTMLDivElement>(null);
-  const prevExpandedIdRef = useRef<string | null>(null);
-
-  useEffect(() => {
-    const wasExpanded = prevExpandedIdRef.current;
-    prevExpandedIdRef.current = expandedId;
-
-    if (expandedId) {
-      const timeout = window.setTimeout(() => {
-        panelRef.current?.scrollIntoView({
-          behavior: "smooth",
-          block: "nearest",
-        });
-      }, 180);
-
-      return () => window.clearTimeout(timeout);
-    }
-
-    if (wasExpanded) {
-      const timeout = window.setTimeout(() => {
-        sectionRef.current?.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }, 120);
-
-      return () => window.clearTimeout(timeout);
-    }
-  }, [expandedId]);
 
   return (
     <section
-      ref={sectionRef}
       id="apps"
       className="py-8 sm:py-10 md:py-12 px-4 sm:px-6 w-full bg-[#0F0F0F] md:border-b md:border-white/5 md:bg-gradient-to-b md:from-white/[0.02] md:to-transparent scroll-mt-11"
     >
@@ -131,55 +78,26 @@ export function AndroidAppsSection() {
         <MobileSectionSpoiler
           title={t.apps.title}
           sectionId="apps"
-          contentClassName="flex flex-col gap-3 sm:gap-4"
+          contentClassName="flex flex-col gap-3 md:gap-5"
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-            {ANDROID_APPS.map((project, index) => {
-              const isExpanded = expandedId === project.id;
+          <div className="md:hidden grid grid-cols-1 gap-3">
+            {ANDROID_APPS.map((project, index) => (
+              <AppCard key={project.id} project={project} index={index} />
+            ))}
+          </div>
 
-              return (
-                <div
-                  key={project.id}
-                  className={
-                    isExpanded ? "col-span-1 sm:col-span-2 lg:col-span-3" : undefined
-                  }
-                >
-                  <AnimatePresence mode="wait">
-                    {!isExpanded ? (
-                      <motion.div
-                        key={`${project.id}-card`}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <AppCard
-                          project={project}
-                          index={index}
-                          onExpand={() => setExpandedId(project.id)}
-                        />
-                      </motion.div>
-                    ) : (
-                      <motion.div
-                        ref={panelRef}
-                        key={`${project.id}-panel`}
-                        className="app-expanded-panel"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.25, ease: "easeOut" }}
-                      >
-                        <AppExpandedPanel
-                          project={project}
-                          index={index}
-                          onCollapse={() => setExpandedId(null)}
-                        />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
+          <div className="hidden md:flex flex-col gap-5">
+            {ANDROID_APPS.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.4, ease: "easeOut", delay: index * 0.04 }}
+              >
+                <AppExpandedPanel project={project} index={index} />
+              </motion.div>
+            ))}
           </div>
         </MobileSectionSpoiler>
       </div>

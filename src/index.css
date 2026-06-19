@@ -35,15 +35,8 @@ body {
     mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
   }
 
-  .hero-social-btn__inner {
-    padding: 0.5rem 0.85rem;
-    font-size: 10px;
-  }
-
-  .hero-bottom-feather {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background: linear-gradient(to bottom, transparent, #0f0f0f);
+  .hero-social-btn {
+    overflow: visible;
   }
 
   .glass-card,

@@ -17,13 +17,13 @@ export function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section id="hero" className="relative z-0 overflow-x-hidden bg-[#0F0F0F]">
+    <section id="hero" className="relative z-0 overflow-visible bg-[#0F0F0F]">
       <div className="absolute top-4 right-4 sm:top-5 sm:right-6 z-20 hidden md:block">
         <LanguageToggle />
       </div>
 
       <div className="relative flex flex-col md:flex-row md:min-h-[400px]">
-        <div className="relative h-48 sm:h-56 md:absolute md:inset-y-0 md:left-0 md:h-auto md:w-[46%] lg:w-[38%] md:max-w-[560px] shrink-0">
+        <div className="relative h-48 sm:h-56 md:absolute md:inset-y-0 md:left-0 md:h-auto md:w-[46%] lg:w-[38%] md:max-w-[560px] shrink-0 overflow-hidden">
           <picture>
             <source srcSet="./avatar.webp" type="image/webp" />
             <img
@@ -38,7 +38,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative z-10 w-full md:ml-[38%] lg:ml-[36%] flex flex-1 flex-col justify-center px-4 sm:px-6 md:pr-12 md:pl-6 py-6 sm:py-8 md:py-10 text-left"
+          className="relative z-10 w-full md:ml-[38%] lg:ml-[36%] flex flex-1 flex-col justify-center px-4 sm:px-6 md:pr-12 md:pl-6 py-6 sm:py-8 md:py-10 pb-12 sm:pb-14 md:pb-10 text-left"
         >
           <h1 className="hero-nickname text-[1.65rem] leading-none sm:text-4xl md:text-5xl font-sans tracking-[0.16em] sm:tracking-[0.28em] md:tracking-[0.35em] lowercase not-italic mb-2 max-w-full">
             {"mishabar".split("").map((letter, index, letters) => {
@@ -61,7 +61,7 @@ export function Hero() {
           <p className="text-[13px] sm:text-base text-white/60 mb-4 sm:mb-5 leading-relaxed max-w-lg">
             {t.hero.bio}
           </p>
-          <div className="flex flex-row flex-wrap items-center gap-2 sm:gap-3 w-full max-w-xl">
+          <div className="relative z-20 flex flex-row flex-wrap items-center gap-2 sm:gap-3 w-full max-w-xl">
             <a
               href={TELEGRAM_LINK}
               target="_blank"

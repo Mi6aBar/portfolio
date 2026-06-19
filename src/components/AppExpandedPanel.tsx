@@ -6,7 +6,7 @@ import { ImageMarquee } from "./ImageMarquee";
 interface AppExpandedPanelProps {
   project: Project;
   index: number;
-  onCollapse: () => void;
+  onCollapse?: () => void;
 }
 
 const linkHoverColors = [
@@ -57,14 +57,16 @@ export function AppExpandedPanel({ project, index, onCollapse }: AppExpandedPane
                 <span>{t.apps.openRustore}</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </a>
-              <button
-                type="button"
-                onClick={onCollapse}
-                className="inline-flex items-center gap-1 text-[10px] uppercase tracking-widest text-white/40 hover:text-white/70 transition-colors"
-              >
-                {t.apps.collapse}
-                <ChevronDown className="w-3.5 h-3.5 rotate-180" />
-              </button>
+              {onCollapse && (
+                <button
+                  type="button"
+                  onClick={onCollapse}
+                  className="inline-flex items-center gap-1 text-[10px] uppercase tracking-widest text-white/40 hover:text-white/70 transition-colors"
+                >
+                  {t.apps.collapse}
+                  <ChevronDown className="w-3.5 h-3.5 rotate-180" />
+                </button>
+              )}
             </div>
           </div>
         </div>
