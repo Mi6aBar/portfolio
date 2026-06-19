@@ -82,10 +82,6 @@ body {
 }
 
 @media (min-width: 768px) {
-  .hero-photo-image {
-    filter: brightness(1.5);
-  }
-
   .hero-photo-fade {
     -webkit-mask-image: linear-gradient(
       to right,
@@ -116,10 +112,10 @@ body {
     background: linear-gradient(
       to bottom,
       rgb(15 15 15 / 0) 38%,
-      rgb(15 15 15 / 0.18) 58%,
-      rgb(15 15 15 / 0.36) 76%,
-      rgb(15 15 15 / 0.5) 90%,
-      rgb(15 15 15 / 0.72) 100%
+      rgb(15 15 15 / 0.35) 58%,
+      rgb(15 15 15 / 0.72) 76%,
+      rgb(15 15 15 / 0.94) 90%,
+      rgb(15 15 15 / 1) 100%
     );
   }
 
@@ -129,6 +125,27 @@ body {
 
   #hero {
     padding-bottom: 1.5rem;
+  }
+
+  /* Solid bg starts below hero social buttons so overlap fade stays intact */
+  .telegram-section {
+    pointer-events: none;
+  }
+
+  .telegram-section > * {
+    pointer-events: auto;
+  }
+
+  .telegram-section::before {
+    content: "";
+    position: absolute;
+    top: 3.75rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: #0f0f0f;
+    border-bottom: 1px solid rgb(255 255 255 / 0.05);
   }
 }
 
@@ -151,11 +168,11 @@ body {
     background: linear-gradient(
       to bottom,
       rgb(15 15 15 / 0) 0%,
-      rgb(15 15 15 / 0.06) 18%,
-      rgb(15 15 15 / 0.22) 48%,
-      rgb(15 15 15 / 0.42) 72%,
-      rgb(15 15 15 / 0.62) 88%,
-      rgb(15 15 15 / 0.85) 100%
+      rgb(15 15 15 / 0.12) 18%,
+      rgb(15 15 15 / 0.42) 48%,
+      rgb(15 15 15 / 0.78) 72%,
+      rgb(15 15 15 / 0.95) 88%,
+      rgb(15 15 15 / 1) 100%
     );
     backdrop-filter: blur(28px) saturate(160%);
     -webkit-backdrop-filter: blur(28px) saturate(160%);
@@ -535,6 +552,19 @@ body {
     inset 0 1px 0 rgb(255 255 255 / 0.06),
     0 16px 32px -20px rgb(0 0 0 / 0.55),
     0 1px 0 rgb(255 255 255 / 0.04);
+}
+
+@media (min-width: 768px) {
+  .site-header-bar {
+    background: linear-gradient(
+      180deg,
+      rgb(15 15 15 / 0.96) 0%,
+      rgb(15 15 15 / 0.9) 100%
+    );
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+    border-bottom: 1px solid rgb(255 255 255 / 0.08);
+  }
 }
 
 .glass-pill {

@@ -29,7 +29,7 @@ export function Hero() {
             <img
               src="./avatar.jpg"
               alt="mishabar"
-              className="h-full w-full object-cover object-[center_18%] md:object-[left_22%] hero-photo-fade hero-photo-image"
+              className="h-full w-full object-cover object-[center_18%] md:object-[left_22%] hero-photo-fade"
             />
           </picture>
           <div
@@ -65,7 +65,7 @@ export function Hero() {
           <p className="text-[13px] sm:text-base text-white/60 mb-4 sm:mb-5 leading-relaxed max-w-lg">
             {t.hero.bio}
           </p>
-          <div className="relative z-30 flex flex-row flex-wrap items-center gap-2 sm:gap-3 w-full max-w-xl md:max-w-2xl">
+          <div className="hero-social-row relative z-30 flex flex-row flex-wrap items-center gap-2 sm:gap-3 w-full max-w-xl md:max-w-2xl">
             <a
               href={TELEGRAM_LINK}
               target="_blank"
