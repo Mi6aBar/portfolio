@@ -10,17 +10,17 @@ export function OtherSection() {
   return (
     <section
       id="music"
-      className="py-6 sm:py-8 px-4 sm:px-6 w-full md:border-t md:border-white/5 md:bg-gradient-to-b md:from-transparent md:to-white/[0.02] scroll-mt-11"
+      className="py-6 sm:py-8 px-4 sm:px-6 w-full bg-[#0F0F0F] md:border-t md:border-white/5 md:bg-gradient-to-b md:from-transparent md:to-white/[0.02] scroll-mt-11"
     >
       <div className="max-w-7xl mx-auto">
         <MobileSectionSpoiler title={t.music.title} sectionId="music">
-          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,320px)_1fr] gap-6 lg:gap-8 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,320px)_1fr] gap-3 sm:gap-4 lg:gap-8 items-start">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className="flex flex-col gap-4 w-full min-w-0"
+              className="rounded-2xl glass-card glass-card-hover p-4 sm:p-5 flex flex-col gap-4 w-full min-w-0"
             >
               <a
                 href={MUSIC.albumLink}
@@ -28,7 +28,7 @@ export function OtherSection() {
                 rel="noopener noreferrer"
                 className="group block w-full max-w-[260px]"
               >
-                <div className="rounded-lg overflow-hidden bg-[#0F0F0F]">
+                <div className="rounded-xl overflow-hidden bg-[#0F0F0F]">
                   <img
                     src={MUSIC.coverUrl}
                     alt={MUSIC.albumTitle}
@@ -56,7 +56,7 @@ export function OtherSection() {
                   href={MUSIC.bandlink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-1.5 w-full max-w-[320px] px-3 py-2.5 rounded-lg glass-card border-amber-400/30 text-[11px] uppercase tracking-widest text-amber-400 hover:border-amber-400/50 transition-colors"
+                  className="inline-flex items-center justify-center gap-1.5 w-full px-3 py-2.5 rounded-xl glass-inset border border-amber-400/30 text-[11px] uppercase tracking-widest text-amber-400 hover:border-amber-400/50 transition-colors"
                 >
                   {t.music.listenAll}
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -66,14 +66,14 @@ export function OtherSection() {
                   <p className="text-[10px] uppercase tracking-widest text-white/40 mb-2">
                     {t.music.alsoOn}
                   </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-1.5">
+                  <div className="flex flex-col gap-1.5">
                     {MUSIC.platforms.map((platform) => (
                       <a
                         key={platform.id}
                         href={platform.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2.5 px-2.5 py-2.5 rounded-lg glass-inset text-[11px] text-white/75 hover:border-amber-400/40 hover:text-amber-400 transition-colors"
+                        className="flex items-center gap-2.5 px-2.5 py-2.5 rounded-xl glass-inset text-[11px] text-white/75 hover:border-amber-400/40 hover:text-amber-400 transition-colors"
                       >
                         <img
                           src={platform.iconUrl}
@@ -109,7 +109,7 @@ export function OtherSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-30px" }}
                   transition={{ duration: 0.4, ease: "easeOut", delay: index * 0.05 }}
-                  className="music-track-card rounded-xl glass-card overflow-hidden"
+                  className="music-track-card rounded-2xl glass-card glass-card-hover overflow-hidden"
                 >
                   <div className="flex flex-col gap-2 px-3 py-2.5 sm:flex-row sm:items-center sm:justify-between sm:gap-2 sm:px-4 sm:py-2 md:border-b md:border-white/5">
                     <div className="flex items-center gap-2 min-w-0">

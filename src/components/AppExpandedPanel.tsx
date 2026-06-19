@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ChevronDown } from "lucide-react";
 import { Project, RUSTORE_ICON } from "../data";
 import { useLanguage, useProjectDescription } from "../i18n/LanguageContext";
 import { ImageMarquee } from "./ImageMarquee";
@@ -6,6 +6,7 @@ import { ImageMarquee } from "./ImageMarquee";
 interface AppExpandedPanelProps {
   project: Project;
   index: number;
+  onCollapse: () => void;
 }
 
 const linkHoverColors = [
@@ -17,7 +18,7 @@ const linkHoverColors = [
   "hover:text-amber-400",
 ];
 
-export function AppExpandedPanel({ project, index }: AppExpandedPanelProps) {
+export function AppExpandedPanel({ project, index, onCollapse }: AppExpandedPanelProps) {
   const { t } = useLanguage();
   const description = useProjectDescription(project.id);
   const direction = index % 2 === 0 ? "left" : "right";
@@ -25,10 +26,10 @@ export function AppExpandedPanel({ project, index }: AppExpandedPanelProps) {
   const iconSrc = project.iconUrl ?? project.images[0];
 
   return (
-    <div className="mt-3 pt-1 lg:pt-2">
+    <div className="rounded-2xl glass-card glass-card-hover p-4 sm:p-6 w-full">
       <div className="flex flex-col lg:flex-row lg:items-start gap-4 lg:gap-6">
-        <div className="flex gap-4 items-start shrink-0 lg:w-[220px] lg:flex-col lg:gap-3">
-          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border border-white/10 md:border-white/10 shrink-0">
+        <div className="flex gap-4 items-start shrink-0 lg:w-[240px] lg:flex-col lg:gap-3">
+          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-white/10 shrink-0">
             <img
               src={iconSrc}
               alt={project.title}
@@ -37,24 +38,34 @@ export function AppExpandedPanel({ project, index }: AppExpandedPanelProps) {
             />
           </div>
           <div className="min-w-0 flex-1">
-            <h3 className="text-base sm:text-lg tracking-tighter mb-2 text-white">
+            <h3 className="text-lg sm:text-xl tracking-tighter mb-2 text-white">
               {project.title.toUpperCase()}
             </h3>
-            <p className="text-sm text-white/65 leading-snug mb-3">{description}</p>
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`inline-flex items-center gap-1.5 text-[11px] uppercase tracking-widest text-white/70 ${linkHover} transition-colors w-fit border-b border-white/20 pb-0.5 hover:border-current`}
-            >
-              <img
-                src={RUSTORE_ICON}
-                alt=""
-                className="w-5 h-5 shrink-0 object-contain rounded-[6px]"
-              />
-              <span>{t.apps.openRustore}</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </a>
+            <p className="text-xs sm:text-sm text-white/65 leading-snug mb-4">{description}</p>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] uppercase tracking-widest text-white/70 ${linkHover} transition-colors border-b border-white/20 pb-0.5 hover:border-current`}
+              >
+                <img
+                  src={RUSTORE_ICON}
+                  alt=""
+                  className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 object-contain rounded-[5px]"
+                />
+                <span>{t.apps.openRustore}</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+              <button
+                type="button"
+                onClick={onCollapse}
+                className="inline-flex items-center gap-1 text-[10px] uppercase tracking-widest text-white/40 hover:text-white/70 transition-colors"
+              >
+                {t.apps.collapse}
+                <ChevronDown className="w-3.5 h-3.5 rotate-180" />
+              </button>
+            </div>
           </div>
         </div>
 

@@ -138,7 +138,7 @@ export function TelegramSection() {
   return (
     <section
       id="telegram"
-      className="relative z-10 overflow-visible py-8 sm:py-10 md:py-12 px-4 sm:px-6 w-full -mt-8 sm:-mt-16 md:-mt-24 pt-12 sm:pt-20 md:pt-24 md:border-b md:border-white/5 scroll-mt-11"
+      className="relative z-10 overflow-visible py-8 sm:py-10 md:py-12 px-4 sm:px-6 w-full bg-[#0F0F0F] -mt-8 sm:-mt-16 md:-mt-24 pt-12 sm:pt-20 md:pt-24 md:border-b md:border-white/5 scroll-mt-11"
     >
       <div className="max-w-7xl mx-auto overflow-visible">
         <MobileSectionSpoiler title={t.telegram.title} sectionId="telegram">

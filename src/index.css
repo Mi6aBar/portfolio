@@ -25,6 +25,11 @@ body {
 }
 
 @media (max-width: 767px) {
+  body,
+  main {
+    background-color: #0f0f0f;
+  }
+
   .hero-photo-fade {
     -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
     mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
@@ -44,25 +49,32 @@ body {
   .glass-card,
   .glass-card-hover:hover,
   .glass-card-active,
-  .glass-inset,
-  .glass-pill {
+  .glass-inset {
     background: #0f0f0f;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     box-shadow: none;
-    border: none;
+    border: 1px solid rgb(255 255 255 / 0.08);
   }
 
   .glass-card-hover:hover,
   .glass-card-active {
     background: #0f0f0f;
+    border-color: rgb(255 255 255 / 0.1);
+  }
+
+  .glass-pill {
+    background: #0f0f0f;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+    border: 1px solid rgb(255 255 255 / 0.08);
   }
 
   .music-track-card {
     background: #0f0f0f;
-    border: none;
+    border: 1px solid rgb(255 255 255 / 0.08);
     box-shadow: none;
-    border-radius: 0;
   }
 
   .music-player-embed {
