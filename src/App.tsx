@@ -26,7 +26,7 @@ export default function App() {
 
         <footer
           id="site-footer"
-          className="md:border-t md:border-white/10 px-4 sm:px-6 py-3 flex flex-col items-start gap-1.5 sm:flex-row sm:items-center sm:justify-between sm:gap-3 text-[10px] text-white/30 tracking-widest uppercase"
+          className="mt-auto md:mt-0 md:border-t md:border-white/10 px-4 sm:px-6 py-3 flex flex-col items-start gap-1.5 sm:flex-row sm:items-center sm:justify-between sm:gap-3 text-[10px] text-white/30 tracking-widest uppercase"
         >
           <p className="leading-snug">
             © {new Date().getFullYear()} MishaBar. {t.footer.rights}
