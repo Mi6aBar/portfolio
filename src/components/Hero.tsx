@@ -23,7 +23,7 @@ export function Hero() {
       </div>
 
       <div className="relative flex flex-col md:flex-row md:min-h-[440px]">
-        <div className="hero-photo-shell relative h-48 sm:h-56 md:absolute md:top-0 md:left-0 md:-bottom-36 md:w-[46%] lg:w-[38%] md:max-w-[560px] shrink-0 overflow-hidden">
+        <div className="hero-photo-shell relative h-48 sm:h-56 md:absolute md:top-0 md:left-0 md:-bottom-48 md:w-[46%] lg:w-[38%] md:max-w-[560px] shrink-0 overflow-hidden">
           <picture>
             <source srcSet="./avatar.webp" type="image/webp" />
             <img

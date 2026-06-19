@@ -103,22 +103,28 @@ body {
     overflow: hidden;
   }
 
-  .hero-photo-bottom-fade {
-    z-index: 2;
-    height: 58%;
-    min-height: 16rem;
+  .hero-photo-shell::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
     background: linear-gradient(
       to bottom,
-      rgb(15 15 15 / 0) 0%,
-      rgb(15 15 15 / 0.22) 32%,
-      rgb(15 15 15 / 0.62) 62%,
-      rgb(15 15 15 / 0.9) 82%,
+      rgb(15 15 15 / 0) 38%,
+      rgb(15 15 15 / 0.35) 58%,
+      rgb(15 15 15 / 0.72) 76%,
+      rgb(15 15 15 / 0.94) 90%,
       rgb(15 15 15 / 1) 100%
     );
   }
 
+  .hero-photo-bottom-fade {
+    display: none;
+  }
+
   #hero {
-    padding-bottom: 2rem;
+    padding-bottom: 1.5rem;
   }
 }
 
