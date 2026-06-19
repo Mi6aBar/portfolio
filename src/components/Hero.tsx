@@ -58,39 +58,41 @@ export function Hero() {
           <p className="text-[13px] sm:text-base text-white/60 mb-4 sm:mb-5 leading-relaxed max-w-lg">
             {t.hero.bio}
           </p>
-          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-3 w-full max-w-xl">
+          <div className="flex flex-row flex-wrap items-center gap-2 sm:gap-3 w-full max-w-xl">
             <a
               href={TELEGRAM_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="hero-social-btn hero-social-btn--telegram text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.2em] w-full sm:w-auto"
+              aria-label={t.hero.telegram}
+              className="hero-social-btn hero-social-btn--telegram text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.2em]"
             >
               <span className="hero-social-btn__glow" aria-hidden="true" />
-              <span className="hero-social-btn__inner w-full sm:w-auto justify-center">
-                <TelegramIcon className="w-3.5 h-3.5 shrink-0" />
-                <span>{t.hero.telegram}</span>
+              <span className="hero-social-btn__inner hero-social-btn__inner--icon">
+                <TelegramIcon className="w-4 h-4 shrink-0" />
+                <span className="hidden sm:inline">{t.hero.telegram}</span>
               </span>
             </a>
             <a
               href={INSTAGRAM_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="hero-social-btn hero-social-btn--instagram text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.2em] w-full sm:w-auto"
+              aria-label={t.hero.instagram}
+              className="hero-social-btn hero-social-btn--instagram text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.2em]"
             >
               <span className="hero-social-btn__glow" aria-hidden="true" />
-              <span className="hero-social-btn__inner w-full sm:w-auto justify-center">
-                <Instagram className="w-3.5 h-3.5 shrink-0" />
-                <span>{t.hero.instagram}</span>
+              <span className="hero-social-btn__inner hero-social-btn__inner--icon">
+                <Instagram className="w-4 h-4 shrink-0" />
+                <span className="hidden sm:inline">{t.hero.instagram}</span>
               </span>
             </a>
             <a
               href={EMAIL_LINK}
-              className="hero-social-btn hero-social-btn--email text-[10px] sm:text-[11px] tracking-normal normal-case w-full sm:w-auto"
+              aria-label="Email"
+              className="hero-social-btn hero-social-btn--email text-[10px] sm:text-[11px] tracking-normal normal-case"
             >
               <span className="hero-social-btn__glow" aria-hidden="true" />
-              <span className="hero-social-btn__inner w-full sm:w-auto justify-center">
-                <Mail className="w-3.5 h-3.5 shrink-0" />
-                <span className="sm:hidden">mail</span>
+              <span className="hero-social-btn__inner hero-social-btn__inner--icon">
+                <Mail className="w-4 h-4 shrink-0" />
                 <span className="hidden sm:inline">mishabar1997@gmail.com</span>
               </span>
             </a>

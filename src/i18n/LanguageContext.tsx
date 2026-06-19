@@ -15,8 +15,11 @@ function detectLocale(): Locale {
   const saved = localStorage.getItem(STORAGE_KEY);
   if (saved === "ru" || saved === "en") return saved;
 
-  const browserLang = navigator.language.toLowerCase();
-  return browserLang.startsWith("ru") ? "ru" : "en";
+  const languages =
+    navigator.languages?.length > 0 ? navigator.languages : [navigator.language];
+
+  const prefersRu = languages.some((lang) => lang.toLowerCase().startsWith("ru"));
+  return prefersRu ? "ru" : "en";
 }
 
 type LanguageContextValue = {

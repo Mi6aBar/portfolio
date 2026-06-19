@@ -37,7 +37,7 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`site-header-bar fixed top-0 inset-x-0 z-40 glass-bar transition-transform duration-300 ease-out motion-reduce:transition-none ${
+      className={`site-header-bar hidden md:block fixed top-0 inset-x-0 z-40 glass-bar transition-transform duration-300 ease-out motion-reduce:transition-none ${
         visible ? "translate-y-0" : "-translate-y-full pointer-events-none"
       }`}
       aria-hidden={!visible}
@@ -51,22 +51,7 @@ export function SiteHeader() {
             {t.header.home}
           </a>
 
-          <nav
-            className="flex md:hidden items-center gap-3 min-w-0 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-            aria-label="Sections"
-          >
-            <a href="#telegram" className={navClass}>
-              {t.header.nav.telegram}
-            </a>
-            <a href="#apps" className={navClass}>
-              {t.header.nav.apps}
-            </a>
-            <a href="#music" className={navClass}>
-              {t.header.nav.music}
-            </a>
-          </nav>
-
-          <nav className="hidden md:flex items-center gap-3 lg:gap-4 min-w-0" aria-label="Sections">
+          <nav className="flex items-center gap-3 lg:gap-4 min-w-0" aria-label="Sections">
             <a href="#telegram" className={navClass}>
               {t.header.nav.telegram}
             </a>
@@ -79,10 +64,10 @@ export function SiteHeader() {
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            <div className="hidden sm:flex items-center gap-2 sm:gap-3">
+            <div className="hidden lg:flex items-center gap-3">
               <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className={contactClass}>
                 <TelegramIcon className="w-3.5 h-3.5" />
-                <span className="hidden lg:inline">{t.hero.telegram}</span>
+                <span>{t.hero.telegram}</span>
               </a>
               <a
                 href={INSTAGRAM_LINK}
@@ -91,11 +76,11 @@ export function SiteHeader() {
                 className={`${contactClass} hover:text-pink-500`}
               >
                 <Instagram className="w-3.5 h-3.5" />
-                <span className="hidden lg:inline">{t.hero.instagram}</span>
+                <span>{t.hero.instagram}</span>
               </a>
-              <a href={EMAIL_LINK} className={`${contactClass} hover:text-emerald-400 hidden md:inline-flex`}>
+              <a href={EMAIL_LINK} className={`${contactClass} hover:text-emerald-400`}>
                 <Mail className="w-3.5 h-3.5" />
-                <span className="hidden xl:inline">mail</span>
+                <span>mail</span>
               </a>
             </div>
             <LanguageToggle />

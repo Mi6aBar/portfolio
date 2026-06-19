@@ -238,6 +238,17 @@ body {
   transition: color 0.25s ease;
 }
 
+.hero-social-btn__inner--icon {
+  padding: 0.625rem;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .hero-social-btn__inner--icon {
+    padding: 0.5rem 1.25rem;
+  }
+}
+
 .hero-social-btn--telegram:hover .hero-social-btn__inner {
   color: #38bdf8;
 }
@@ -303,19 +314,19 @@ body {
 }
 
 .marquee-track-left {
-  animation: marquee-left 22s linear infinite;
+  animation: marquee-left 44s linear infinite;
 }
 
 .marquee-track-right {
-  animation: marquee-right 22s linear infinite;
+  animation: marquee-right 44s linear infinite;
 }
 
 .marquee-track-landscape.marquee-track-left {
-  animation-duration: 28s;
+  animation-duration: 56s;
 }
 
 .marquee-track-landscape.marquee-track-right {
-  animation-duration: 28s;
+  animation-duration: 56s;
 }
 
 .marquee-track-paused {
