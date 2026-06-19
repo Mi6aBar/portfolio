@@ -1,0 +1,40 @@
+import { Hero } from "./components/Hero";
+import { AndroidAppsSection } from "./components/AndroidAppsSection";
+import { OtherSection } from "./components/OtherSection";
+import { ScrollProgress } from "./components/ScrollProgress";
+import { TelegramSection } from "./components/TelegramSection";
+import { SiteHeader } from "./components/SiteHeader";
+import { BackToTop } from "./components/BackToTop";
+import { PageViews } from "./components/PageViews";
+import { useLanguage } from "./i18n/LanguageContext";
+
+export default function App() {
+  const { t } = useLanguage();
+
+  return (
+    <>
+      <ScrollProgress />
+      <SiteHeader />
+      <main
+        id="top"
+        className="min-h-screen bg-[#0F0F0F] text-white flex flex-col font-sans overflow-x-hidden scroll-smooth"
+      >
+        <Hero />
+        <TelegramSection />
+        <AndroidAppsSection />
+        <OtherSection />
+
+        <footer
+          id="site-footer"
+          className="border-t border-white/10 px-4 sm:px-6 py-3 flex flex-row items-center justify-between gap-3 text-[10px] text-white/30 tracking-widest uppercase"
+        >
+          <p>
+            © {new Date().getFullYear()} MishaBar. {t.footer.rights}
+          </p>
+          <PageViews />
+        </footer>
+      </main>
+      <BackToTop />
+    </>
+  );
+}
