@@ -233,45 +233,15 @@ body {
   }
 }
 
-@keyframes hero-btn-seq-telegram {
+@keyframes hero-btn-glow-pulse {
   0%,
-  3%,
-  30%,
-  33%,
+  12%,
+  88%,
   100% {
     opacity: 0;
   }
-  6%,
-  27% {
-    opacity: 1;
-  }
-}
-
-@keyframes hero-btn-seq-instagram {
-  0%,
-  33%,
-  36%,
-  63%,
-  66%,
-  100% {
-    opacity: 0;
-  }
-  39%,
-  60% {
-    opacity: 1;
-  }
-}
-
-@keyframes hero-btn-seq-email {
-  0%,
-  66%,
-  69%,
-  96%,
-  100% {
-    opacity: 0;
-  }
-  72%,
-  93% {
+  28%,
+  72% {
     opacity: 1;
   }
 }
@@ -350,19 +320,19 @@ body {
 .hero-social-btn--telegram .hero-social-btn__glow {
   animation:
     hero-btn-glow-spin 8s linear infinite,
-    hero-btn-seq-telegram 24s ease-in-out infinite;
+    hero-btn-glow-pulse 8s ease-in-out infinite;
 }
 
 .hero-social-btn--instagram .hero-social-btn__glow {
   animation:
     hero-btn-glow-spin 8s linear infinite,
-    hero-btn-seq-instagram 24s ease-in-out infinite;
+    hero-btn-glow-pulse 8s ease-in-out infinite;
 }
 
 .hero-social-btn--email .hero-social-btn__glow {
   animation:
     hero-btn-glow-spin 8s linear infinite,
-    hero-btn-seq-email 24s ease-in-out infinite;
+    hero-btn-glow-pulse 8s ease-in-out infinite;
 }
 
 .hero-social-btn__inner {

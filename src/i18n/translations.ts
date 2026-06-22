@@ -19,7 +19,7 @@ export const translations = {
     },
     hero: {
       role: "разработчик-энтузиаст",
-      bio: "Android-приложения, Telegram-боты и скрипты — от морской сферы до повседневных задач",
+      bio: "Android-приложения, Windows-программы, Telegram-боты и скрипты — от морской сферы до повседневных задач",
       telegram: "Telegram",
       instagram: "Instagram",
     },
@@ -129,7 +129,7 @@ export const translations = {
     },
     hero: {
       role: "developer enthusiast",
-      bio: "Android apps, Telegram bots and scripts — from maritime tools to everyday tasks",
+      bio: "Android apps, Windows programs, Telegram bots and scripts — from maritime tools to everyday tasks",
       telegram: "Telegram",
       instagram: "Instagram",
     },
