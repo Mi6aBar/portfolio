@@ -42,7 +42,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative z-10 w-full min-w-0 md:ml-[38%] lg:ml-[36%] flex flex-1 flex-col justify-center overflow-visible px-4 sm:px-6 md:pr-8 lg:pr-12 md:pl-6 py-6 sm:py-8 md:py-10 pb-12 sm:pb-14 md:pb-24 lg:pb-16 text-left"
+          className="relative z-10 w-full min-w-0 md:ml-[38%] lg:ml-[36%] flex flex-1 flex-col justify-center overflow-visible px-4 sm:px-6 md:pr-8 lg:pr-12 md:pl-6 py-6 sm:py-8 md:py-10 pb-12 sm:pb-16 md:pb-28 lg:pb-20 text-left"
         >
           <h1 className="hero-nickname text-[1.65rem] leading-none sm:text-4xl md:text-5xl font-sans tracking-[0.16em] sm:tracking-[0.28em] md:tracking-[0.35em] lowercase not-italic mb-2 max-w-full">
             {"mishabar".split("").map((letter, index, letters) => {
@@ -65,7 +65,7 @@ export function Hero() {
           <p className="text-[13px] sm:text-base text-white/60 mb-4 sm:mb-5 leading-relaxed max-w-lg">
             {t.hero.bio}
           </p>
-          <div className="hero-social-row relative z-40 flex flex-row flex-wrap items-center gap-2 sm:gap-3 w-full min-w-0">
+          <div className="hero-social-row relative z-40 flex flex-row flex-wrap items-center gap-2 sm:gap-3 w-full min-w-0 pb-1 sm:pb-2">
             <a
               href={TELEGRAM_LINK}
               target="_blank"
@@ -95,13 +95,13 @@ export function Hero() {
             <a
               href={EMAIL_LINK}
               aria-label="Email"
-              className="hero-social-btn hero-social-btn--email text-[10px] sm:text-[11px] tracking-normal normal-case"
+              className="hero-social-btn hero-social-btn--email text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.2em]"
             >
               <span className="hero-social-btn__glow" aria-hidden="true" />
               <span className="hero-social-btn__inner hero-social-btn__inner--icon">
                 <Mail className="w-4 h-4 shrink-0" />
-                <span className="hidden lg:inline">mishabar1997@gmail.com</span>
-                <span className="hidden md:inline lg:hidden">mail</span>
+                <span className="hidden lg:inline normal-case tracking-normal">mishabar1997@gmail.com</span>
+                <span className="hidden sm:inline lg:hidden">MAIL</span>
               </span>
             </a>
           </div>

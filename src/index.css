@@ -124,7 +124,7 @@ body {
   }
 
   #hero {
-    padding-bottom: 1.5rem;
+    padding-bottom: 2.5rem;
   }
 
   /* Solid bg starts below hero social buttons so overlap fade stays intact */
@@ -148,7 +148,7 @@ body {
   .telegram-section::before {
     content: "";
     position: absolute;
-    top: 8.5rem;
+    top: 10rem;
     left: 0;
     right: 0;
     bottom: 0;
@@ -160,7 +160,7 @@ body {
 
 @media (min-width: 1024px) {
   .telegram-section::before {
-    top: 6rem;
+    top: 7.5rem;
   }
 }
 
