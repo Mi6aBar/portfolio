@@ -136,16 +136,31 @@ body {
     pointer-events: auto;
   }
 
+  .hero-social-row {
+    position: relative;
+    z-index: 40;
+  }
+
+  .hero-social-btn {
+    overflow: visible;
+  }
+
   .telegram-section::before {
     content: "";
     position: absolute;
-    top: 3.75rem;
+    top: 8.5rem;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: -1;
     background: #0f0f0f;
     border-bottom: 1px solid rgb(255 255 255 / 0.05);
+  }
+}
+
+@media (min-width: 1024px) {
+  .telegram-section::before {
+    top: 6rem;
   }
 }
 
