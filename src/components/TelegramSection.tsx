@@ -158,7 +158,7 @@ export function TelegramSection() {
             </span>
           }
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 overflow-visible">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 overflow-visible">
             {TELEGRAM_PROJECTS.map((project, index) => (
               <TelegramCard key={project.id} project={project} index={index} />
             ))}

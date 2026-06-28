@@ -69,7 +69,10 @@ export const translations = {
     projects: {
       sea_apks: {
         description:
-          "Канал с собранием полезных Android-приложений для моряков и не только. Новые релизы, обновления и подборки утилит",
+          "Канал с собранием полезных ресурсов для моряков и не только. Связь — @mishabar",
+      },
+      sea_apps_other: {
+        description: "Хранилище с другими приложениями, найденными в сети.",
       },
       sudovodgmu: {
         description:
@@ -179,7 +182,10 @@ export const translations = {
     projects: {
       sea_apks: {
         description:
-          "A channel with useful Android apps for seafarers and beyond. New releases, updates and curated utility picks",
+          "A channel with useful resources for seafarers and beyond. Contact — @mishabar",
+      },
+      sea_apps_other: {
+        description: "A vault of other apps found online.",
       },
       sudovodgmu: {
         description:

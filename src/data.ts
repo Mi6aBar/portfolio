@@ -53,6 +53,13 @@ export const TELEGRAM_PROJECTS: Project[] = [
     images: ["./images/telegram/sea_apks.jpg"],
   },
   {
+    id: "sea_apps_other",
+    title: "SEA APPS OTHER",
+    platform: "channel",
+    link: "https://t.me/sea_apps_other",
+    images: ["./images/telegram/sea_apps_other.jpg"],
+  },
+  {
     id: "sudovodgmu",
     title: "СУДОВОД ГМУ",
     platform: "channel",
