@@ -72,7 +72,7 @@ export function AndroidAppsSection() {
   return (
     <section
       id="apps"
-      className="max-md:py-0 md:py-12 px-4 sm:px-6 w-full bg-[#0F0F0F] md:border-b md:border-white/5 md:bg-gradient-to-b md:from-white/[0.02] md:to-transparent scroll-mt-11"
+      className="max-md:py-0 md:py-12 px-4 sm:px-6 w-full bg-[#0F0F0F] max-md:border-b max-md:border-white/5 md:border-b md:border-white/5 md:bg-gradient-to-b md:from-white/[0.02] md:to-transparent scroll-mt-11"
     >
       <div className="max-w-7xl mx-auto">
         <MobileSectionSpoiler

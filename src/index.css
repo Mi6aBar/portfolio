@@ -434,19 +434,19 @@ body {
 }
 
 .marquee-track-left {
-  animation: marquee-left 44s linear infinite;
+  animation: marquee-left 88s linear infinite;
 }
 
 .marquee-track-right {
-  animation: marquee-right 44s linear infinite;
+  animation: marquee-right 88s linear infinite;
 }
 
 .marquee-track-landscape.marquee-track-left {
-  animation-duration: 56s;
+  animation-duration: 112s;
 }
 
 .marquee-track-landscape.marquee-track-right {
-  animation-duration: 56s;
+  animation-duration: 112s;
 }
 
 .marquee-track-paused {

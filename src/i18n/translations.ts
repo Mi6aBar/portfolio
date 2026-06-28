@@ -27,8 +27,8 @@ export const translations = {
       title: "Каналы и боты",
       open: "Открыть",
       platforms: {
-        channel: "Channel",
-        bot: "Bot",
+        channel: "Канал",
+        bot: "Бот",
       },
       social: {
         Instagram: "Instagram",
