@@ -69,7 +69,7 @@ export const translations = {
     projects: {
       sea_apks: {
         description:
-          "Канал с собранием полезных ресурсов для моряков и не только. Связь — @mishabar",
+          "Канал с собранием полезных ресурсов для моряков и не только.",
       },
       sea_apps_other: {
         description: "Хранилище с другими приложениями, найденными в сети.",
@@ -182,7 +182,7 @@ export const translations = {
     projects: {
       sea_apks: {
         description:
-          "A channel with useful resources for seafarers and beyond. Contact — @mishabar",
+          "A channel with useful resources for seafarers and beyond.",
       },
       sea_apps_other: {
         description: "A vault of other apps found online.",

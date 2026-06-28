@@ -50,7 +50,7 @@ export const TELEGRAM_PROJECTS: Project[] = [
         link: "https://www.tiktok.com/@sea_apps?_r=1&_t=ZS-97KEXF3Co0Q",
       },
     ],
-    images: ["./images/telegram/sea_apks.jpg"],
+    images: ["./images/telegram/sea_apks-2026.jpg"],
   },
   {
     id: "sea_apps_other",
