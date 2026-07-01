@@ -58,6 +58,9 @@ export function SiteHeader() {
             <a href="#apps" className={navClass}>
               {t.header.nav.apps}
             </a>
+            <a href="#programs" className={navClass}>
+              {t.header.nav.programs}
+            </a>
             <a href="#music" className={navClass}>
               {t.header.nav.music}
             </a>

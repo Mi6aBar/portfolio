@@ -1,5 +1,6 @@
 import { Hero } from "./components/Hero";
 import { AndroidAppsSection } from "./components/AndroidAppsSection";
+import { WindowsProgramsSection } from "./components/WindowsProgramsSection";
 import { OtherSection } from "./components/OtherSection";
 import { ScrollProgress } from "./components/ScrollProgress";
 import { TelegramSection } from "./components/TelegramSection";
@@ -22,6 +23,7 @@ export default function App() {
         <Hero />
         <TelegramSection />
         <AndroidAppsSection />
+        <WindowsProgramsSection />
         <OtherSection />
 
         <footer

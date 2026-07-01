@@ -7,6 +7,8 @@ interface AppExpandedPanelProps {
   project: Project;
   index: number;
   onCollapse?: () => void;
+  linkIcon?: string;
+  linkLabel?: string;
 }
 
 const linkHoverColors = [
@@ -18,12 +20,19 @@ const linkHoverColors = [
   "hover:text-amber-400",
 ];
 
-export function AppExpandedPanel({ project, index, onCollapse }: AppExpandedPanelProps) {
+export function AppExpandedPanel({
+  project,
+  index,
+  onCollapse,
+  linkIcon = RUSTORE_ICON,
+  linkLabel,
+}: AppExpandedPanelProps) {
   const { t } = useLanguage();
   const description = useProjectDescription(project.id);
   const direction = index % 2 === 0 ? "left" : "right";
   const linkHover = linkHoverColors[index % linkHoverColors.length];
   const iconSrc = project.iconUrl ?? project.images[0];
+  const actionLabel = linkLabel ?? t.apps.openRustore;
 
   return (
     <div className="rounded-2xl glass-card glass-card-hover p-4 sm:p-6 w-full">
@@ -50,11 +59,11 @@ export function AppExpandedPanel({ project, index, onCollapse }: AppExpandedPane
                 className={`inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] uppercase tracking-widest text-white/70 ${linkHover} transition-colors border-b border-white/20 pb-0.5 hover:border-current`}
               >
                 <img
-                  src={RUSTORE_ICON}
+                  src={linkIcon}
                   alt=""
                   className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 object-contain rounded-[5px]"
                 />
-                <span>{t.apps.openRustore}</span>
+                <span>{actionLabel}</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </a>
               {onCollapse && (

@@ -14,6 +14,7 @@ export const translations = {
       nav: {
         telegram: "Каналы и боты",
         apps: "Приложения",
+        programs: "Программы",
         music: "Музыка",
       },
     },
@@ -43,6 +44,11 @@ export const translations = {
       openRustore: "Открыть в RuStore",
       expand: "Скриншоты",
       collapse: "Свернуть",
+    },
+    programs: {
+      title: "Программы",
+      platform: "Windows",
+      openGithub: "Скачать на GitHub",
     },
     music: {
       title: "Музыка",
@@ -114,6 +120,10 @@ export const translations = {
         description:
           "DreamScape — анализ снов с помощью ИИ, визуализация сновидений, дневник, галерея и музыка для сна (есть реклама и платный контент)",
       },
+      tp_chart_master: {
+        description:
+          "Portable‑программа для Windows: сборка пользовательских ECDIS‑карт из нотисов ADMIRALTY T&P через ADC. Маршрут, весь мир и список нотисов; экспорт Transas (.aiz), Furuno и JRC. Один exe, без установки. Русский и English.",
+      },
     },
   },
   en: {
@@ -127,6 +137,7 @@ export const translations = {
       nav: {
         telegram: "Channels & bots",
         apps: "Apps",
+        programs: "Programs",
         music: "Music",
       },
     },
@@ -156,6 +167,11 @@ export const translations = {
       openRustore: "Open in RuStore",
       expand: "Screenshots",
       collapse: "Collapse",
+    },
+    programs: {
+      title: "Programs",
+      platform: "Windows",
+      openGithub: "Download on GitHub",
     },
     music: {
       title: "Music",
@@ -226,6 +242,10 @@ export const translations = {
       dreams: {
         description:
           "DreamScape — AI dream analysis, dream visualization, journal, gallery and sleep music (contains ads and paid content)",
+      },
+      tp_chart_master: {
+        description:
+          "Portable Windows app for building ECDIS user charts from ADMIRALTY T&P notices via ADC. Route, worldwide and notice list; Transas (.aiz), Furuno and JRC export. Single exe, no install. Russian and English.",
       },
     },
   },

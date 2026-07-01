@@ -1,6 +1,6 @@
 export type ImageAspect = "portrait" | "landscape";
 
-export type ProjectPlatform = "channel" | "bot" | "android";
+export type ProjectPlatform = "channel" | "bot" | "android" | "windows";
 
 export type ProjectSocialLink = {
   name: "Instagram" | "TikTok" | "Chat";
@@ -29,6 +29,7 @@ export const TELEGRAM_LINK = "https://t.me/mishabar";
 export const EMAIL_LINK = "mailto:mishabar1997@gmail.com";
 export const SEA_APKS_CHAT_LINK = "https://t.me/sea_apks_chat";
 export const RUSTORE_ICON = "./icons/rustore-icon.svg";
+export const GITHUB_ICON = "./icons/github-icon.svg";
 
 export const TELEGRAM_PROJECTS: Project[] = [
   {
@@ -167,6 +168,21 @@ export const ANDROID_APPS: Project[] = [
       "./images/screenshots/dreams/02.png",
       "./images/screenshots/dreams/03.png",
       "./images/screenshots/dreams/04.png",
+    ],
+  },
+];
+
+export const WINDOWS_PROGRAMS: Project[] = [
+  {
+    id: "tp_chart_master",
+    title: "T&P Chart Master",
+    platform: "windows",
+    link: "https://github.com/Mi6aBar/tp-transas-user-chart/releases",
+    iconUrl: "./icons/programs/tp-chart-master.png",
+    imageAspect: "landscape",
+    images: [
+      "./images/screenshots/tp-chart-master/01.jpg",
+      "./images/screenshots/tp-chart-master/02.jpg",
     ],
   },
 ];
