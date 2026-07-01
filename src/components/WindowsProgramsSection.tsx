@@ -37,10 +37,6 @@ function ProgramCard({ project, index }: { project: Project; index: number }) {
         />
       </div>
 
-      <span className="text-[10px] uppercase tracking-widest text-white/40 mb-2">
-        {t.programs.platform}
-      </span>
-
       <h3 className="text-lg sm:text-xl tracking-tighter mb-2 text-white">
         {project.title.toUpperCase()}
       </h3>
@@ -48,15 +44,6 @@ function ProgramCard({ project, index }: { project: Project; index: number }) {
       <p className="text-xs sm:text-sm text-white/55 leading-relaxed mb-4 flex-1">
         {description}
       </p>
-
-      <div className="w-full mb-4 rounded-xl overflow-hidden border border-white/10 bg-black/20 aspect-[5/4] max-w-md mx-auto">
-        <img
-          src={project.images[1] ?? project.images[0]}
-          alt=""
-          loading="lazy"
-          className="w-full h-full object-contain object-top"
-        />
-      </div>
 
       <a
         href={project.link}
