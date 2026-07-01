@@ -180,9 +180,10 @@ export const WINDOWS_PROGRAMS: Project[] = [
     platform: "windows",
     link: "https://github.com/Mi6aBar/tp-transas-user-chart/releases",
     iconUrl: "./icons/programs/tp-chart-master.png",
-    imageAspects: ["square", "landscape", "landscape", "landscape"],
+    imageAspects: ["square", "landscape", "landscape", "landscape", "landscape"],
     images: [
       "./icons/programs/tp-chart-master.png",
+      "./images/screenshots/tp-chart-master/01.jpg",
       "./images/screenshots/tp-chart-master/02.jpg",
       "./images/screenshots/tp-chart-master/03.jpg",
       "./images/screenshots/tp-chart-master/04.jpg",
