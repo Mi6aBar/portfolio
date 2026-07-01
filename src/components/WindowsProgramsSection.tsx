@@ -49,20 +49,13 @@ function ProgramCard({ project, index }: { project: Project; index: number }) {
         {description}
       </p>
 
-      <div className="grid grid-cols-2 gap-2 w-full mb-4">
-        {project.images.map((src) => (
-          <div
-            key={src}
-            className="rounded-lg overflow-hidden border border-white/10 bg-black/20 aspect-video"
-          >
-            <img
-              src={src}
-              alt=""
-              loading="lazy"
-              className="w-full h-full object-cover object-top"
-            />
-          </div>
-        ))}
+      <div className="w-full mb-4 rounded-xl overflow-hidden border border-white/10 bg-black/20 aspect-[5/4] max-w-md mx-auto">
+        <img
+          src={project.images[1] ?? project.images[0]}
+          alt=""
+          loading="lazy"
+          className="w-full h-full object-contain object-top"
+        />
       </div>
 
       <a

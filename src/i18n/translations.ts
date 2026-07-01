@@ -122,7 +122,7 @@ export const translations = {
       },
       tp_chart_master: {
         description:
-          "Portable‑программа для Windows: сборка пользовательских ECDIS‑карт из нотисов ADMIRALTY T&P через ADC. Маршрут, весь мир и список нотисов; экспорт Transas (.aiz), Furuno и JRC. Один exe, без установки. Русский и English.",
+          "Portable‑программа для Windows: сборка пользовательских ECDIS‑слоев из нотисов ADMIRALTY T&P через ADC. Для Transas, Furuno и JRC.",
       },
     },
   },
@@ -245,7 +245,7 @@ export const translations = {
       },
       tp_chart_master: {
         description:
-          "Portable Windows app for building ECDIS user charts from ADMIRALTY T&P notices via ADC. Route, worldwide and notice list; Transas (.aiz), Furuno and JRC export. Single exe, no install. Russian and English.",
+          "Portable Windows app for building ECDIS user layers from ADMIRALTY T&P notices via ADC. For Transas, Furuno and JRC.",
       },
     },
   },

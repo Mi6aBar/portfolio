@@ -9,6 +9,28 @@ interface ImageMarqueeProps {
   index?: number;
   title?: string;
   aspect?: ImageAspect;
+  imageAspects?: ImageAspect[];
+}
+
+function frameForAspect(aspect: ImageAspect) {
+  if (aspect === "square") {
+    return {
+      frame: "w-[104px] sm:w-[136px] md:w-[168px] aspect-square",
+      image: "w-full h-full object-contain rounded-lg md:rounded-xl bg-black/25 p-1.5 sm:p-2",
+    };
+  }
+
+  if (aspect === "landscape") {
+    return {
+      frame: "w-[210px] sm:w-[290px] md:w-[360px] aspect-[5/4]",
+      image: "w-full h-full object-contain object-top rounded-md sm:rounded-lg bg-black/25",
+    };
+  }
+
+  return {
+    frame: "w-[108px] sm:w-[160px] md:w-[200px] h-[190px] sm:h-[250px] md:h-[280px]",
+    image: "w-full h-full object-contain rounded-lg md:rounded-xl",
+  };
 }
 
 export function ImageMarquee({
@@ -17,32 +39,30 @@ export function ImageMarquee({
   index = 0,
   title,
   aspect = "portrait",
+  imageAspects,
 }: ImageMarqueeProps) {
   const [hovered, setHovered] = useState(false);
   const [pressed, setPressed] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const isPaused = hovered || pressed;
 
+  const resolvedAspects = images.map((_, imageIndex) => imageAspects?.[imageIndex] ?? aspect);
+  const isMixed = imageAspects !== undefined && imageAspects.length > 0;
+  const isLandscapeTrack = resolvedAspects.some((item) => item === "landscape");
+
   const marqueeImages = [...images, ...images, ...images, ...images, ...images, ...images];
   const rotations = ["rotate-1", "-rotate-1", "rotate-1", "-rotate-1", "rotate-1", "-rotate-1"];
-  const isLandscape = aspect === "landscape";
 
-  const frameClass = isLandscape
-    ? "w-[170px] sm:w-[240px] md:w-[300px] aspect-video"
-    : "w-[108px] sm:w-[160px] md:w-[200px] h-[190px] sm:h-[250px] md:h-[280px]";
-
-  const imageClass = isLandscape
-    ? "w-full h-full object-cover rounded-md sm:rounded-lg"
-    : "w-full h-full object-contain rounded-lg md:rounded-xl";
-
-  const containerHeight = isLandscape
-    ? "h-[110px] sm:h-[160px] md:h-[190px]"
-    : "h-[200px] sm:h-[260px] md:h-[290px]";
+  const containerHeight = isMixed
+    ? "h-[220px] sm:h-[270px] md:h-[300px]"
+    : aspect === "landscape"
+      ? "h-[110px] sm:h-[160px] md:h-[190px]"
+      : "h-[200px] sm:h-[260px] md:h-[290px]";
 
   const trackClass = [
-    "marquee-track flex gap-3 sm:gap-4 md:gap-5 absolute left-0",
+    "marquee-track flex items-center gap-3 sm:gap-4 md:gap-5 absolute left-0",
     direction === "left" ? "marquee-track-left" : "marquee-track-right",
-    isLandscape ? "marquee-track-landscape" : "",
+    isLandscapeTrack ? "marquee-track-landscape" : "",
     isPaused ? "marquee-track-paused" : "",
   ]
     .filter(Boolean)
@@ -75,6 +95,8 @@ export function ImageMarquee({
           {marqueeImages.map((src, idx) => {
             const rotationClass = rotations[(idx + index) % rotations.length];
             const imageIndex = idx % images.length;
+            const itemAspect = resolvedAspects[imageIndex];
+            const { frame, image } = frameForAspect(itemAspect);
 
             return (
               <button
@@ -84,14 +106,14 @@ export function ImageMarquee({
                   event.stopPropagation();
                   openLightbox(imageIndex);
                 }}
-                className={`${frameClass} shrink-0 overflow-hidden ${rotationClass} flex flex-col transition-transform hover:z-20 hover:scale-[1.02] hover:rotate-0 cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30`}
+                className={`${frame} shrink-0 overflow-hidden border border-white/10 ${rotationClass} flex flex-col transition-transform hover:z-20 hover:scale-[1.02] hover:rotate-0 cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30`}
                 aria-label={`Открыть скриншот ${imageIndex + 1}`}
               >
                 <img
                   src={src}
                   alt={title ? `${title} screenshot` : "Project screenshot"}
                   loading="lazy"
-                  className={`${imageClass} transition-all duration-300 pointer-events-none`}
+                  className={`${image} transition-all duration-300 pointer-events-none`}
                 />
               </button>
             );
@@ -105,7 +127,7 @@ export function ImageMarquee({
             images={images}
             initialIndex={lightboxIndex}
             title={title}
-            aspect={aspect}
+            aspect={resolvedAspects[lightboxIndex] ?? aspect}
             onClose={() => setLightboxIndex(null)}
           />
         )}

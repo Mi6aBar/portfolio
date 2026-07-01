@@ -87,6 +87,7 @@ export function AppExpandedPanel({
             index={index}
             title={project.title}
             aspect={project.imageAspect ?? "portrait"}
+            imageAspects={project.imageAspects}
           />
         </div>
       </div>
