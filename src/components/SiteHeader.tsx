@@ -15,8 +15,8 @@ function TelegramIcon({ className }: { className?: string }) {
 const navClass =
   "text-[10px] uppercase tracking-widest text-white/45 hover:text-white transition-colors shrink-0 whitespace-nowrap";
 
-const contactClass =
-  "inline-flex items-center gap-1 text-[10px] uppercase tracking-widest text-white/45 hover:text-sky-400 transition-colors shrink-0";
+const contactBaseClass =
+  "inline-flex items-center gap-1 text-[10px] uppercase tracking-widest text-white/45 transition-colors shrink-0";
 
 export function SiteHeader() {
   const { t } = useLanguage();
@@ -68,7 +68,12 @@ export function SiteHeader() {
 
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <div className="hidden lg:flex items-center gap-3">
-              <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className={contactClass}>
+              <a
+                href={TELEGRAM_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${contactBaseClass} hover:text-sky-400`}
+              >
                 <TelegramIcon className="w-3.5 h-3.5" />
                 <span>{t.hero.telegram}</span>
               </a>
@@ -76,12 +81,12 @@ export function SiteHeader() {
                 href={INSTAGRAM_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`${contactClass} hover:text-pink-500`}
+                className={`${contactBaseClass} hover:text-pink-500`}
               >
                 <Instagram className="w-3.5 h-3.5" />
                 <span>{t.hero.instagram}</span>
               </a>
-              <a href={EMAIL_LINK} className={`${contactClass} hover:text-emerald-400`}>
+              <a href={EMAIL_LINK} className={`${contactBaseClass} hover:text-emerald-400`}>
                 <Mail className="w-3.5 h-3.5" />
                 <span>mail</span>
               </a>
