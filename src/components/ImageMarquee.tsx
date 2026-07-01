@@ -20,10 +20,17 @@ function frameForAspect(aspect: ImageAspect) {
     };
   }
 
-  if (aspect === "landscape") {
+  if (aspect === "desktop") {
     return {
       frame: "w-[210px] sm:w-[290px] md:w-[360px] aspect-[5/4]",
       image: "w-full h-full object-contain object-top rounded-md sm:rounded-lg bg-black/25",
+    };
+  }
+
+  if (aspect === "landscape") {
+    return {
+      frame: "w-[170px] sm:w-[240px] md:w-[300px] aspect-video",
+      image: "w-full h-full object-cover rounded-md sm:rounded-lg",
     };
   }
 
@@ -47,13 +54,15 @@ export function ImageMarquee({
   const isPaused = hovered || pressed;
 
   const resolvedAspects = images.map((_, imageIndex) => imageAspects?.[imageIndex] ?? aspect);
-  const isMixed = imageAspects !== undefined && imageAspects.length > 0;
-  const isLandscapeTrack = resolvedAspects.some((item) => item === "landscape");
+  const hasDesktopFrames = resolvedAspects.some((item) => item === "desktop");
+  const isLandscapeTrack = resolvedAspects.some(
+    (item) => item === "landscape" || item === "desktop",
+  );
 
   const marqueeImages = [...images, ...images, ...images, ...images, ...images, ...images];
   const rotations = ["rotate-1", "-rotate-1", "rotate-1", "-rotate-1", "rotate-1", "-rotate-1"];
 
-  const containerHeight = isMixed
+  const containerHeight = hasDesktopFrames
     ? "h-[220px] sm:h-[270px] md:h-[300px]"
     : aspect === "landscape"
       ? "h-[110px] sm:h-[160px] md:h-[190px]"
@@ -106,7 +115,7 @@ export function ImageMarquee({
                   event.stopPropagation();
                   openLightbox(imageIndex);
                 }}
-                className={`${frame} shrink-0 overflow-hidden border border-white/10 ${rotationClass} flex flex-col transition-transform hover:z-20 hover:scale-[1.02] hover:rotate-0 cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30`}
+                className={`${frame} shrink-0 overflow-hidden${itemAspect === "desktop" ? " border border-white/10" : ""} ${rotationClass} flex flex-col transition-transform hover:z-20 hover:scale-[1.02] hover:rotate-0 cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30`}
                 aria-label={`Открыть скриншот ${imageIndex + 1}`}
               >
                 <img

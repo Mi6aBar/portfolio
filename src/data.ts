@@ -1,4 +1,4 @@
-export type ImageAspect = "portrait" | "landscape" | "square";
+export type ImageAspect = "portrait" | "landscape" | "square" | "desktop";
 
 export type ProjectPlatform = "channel" | "bot" | "android" | "windows";
 
@@ -180,7 +180,7 @@ export const WINDOWS_PROGRAMS: Project[] = [
     platform: "windows",
     link: "https://github.com/Mi6aBar/tp-transas-user-chart/releases",
     iconUrl: "./icons/programs/tp-chart-master.png",
-    imageAspects: ["landscape", "landscape", "landscape", "landscape"],
+    imageAspects: ["desktop", "desktop", "desktop", "desktop"],
     images: [
       "./images/screenshots/tp-chart-master/01.jpg",
       "./images/screenshots/tp-chart-master/02.jpg",
